@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/mtv_one"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:text="Hello World!"
+        android:textColor="#C12525"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="#52B626"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/mtv_two"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:shadowColor="#8524C1"
+        android:shadowRadius="3.0"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:text="hello world"
+        android:gravity="center"
+        />
+    <com.example.a32_textview.MyTextView
+        android:id="@+id/mtv_three"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:text="helloworld helloworld helloworld helloworld helloworld helloworld helloworld helloworld helloworld "
+        android:singleLine="true"
+        android:gravity="center"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+    <ImageView
+        android:id="@+id/img_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

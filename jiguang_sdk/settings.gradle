@@ -1,0 +1,4 @@
+include ':mylibrary'
+include ':jiguang-demo',":jiguang"
+include ':app'
+rootProject.name = "jiguangtuisong"
