@@ -44,6 +44,8 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation project(':MVPlibrary')//引入模块  然后将项目里的依赖移动到模块的build.gradle里
+
 
     //导入百度地图sdk的库
     implementation fileTree(dir:  'libs' , include: ['*.jar'])
@@ -51,6 +53,9 @@ dependencies {
         exclude group: 'com.android.support',  module: 'support-annotations'
     })
 
+    //lombok插件
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
 
 
 
@@ -73,9 +78,9 @@ dependencies {
     //状态栏
     implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     //支持okhttp
-    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 
 }

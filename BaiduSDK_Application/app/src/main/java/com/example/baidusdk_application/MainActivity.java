@@ -16,8 +16,15 @@ import com.baidu.location.LocationClientOption;
 import com.example.baidusdk_application.utils.ToastUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +46,10 @@ public class MainActivity extends AppCompatActivity {
         rxPermissions = new RxPermissions(this);//实例化这个权限请求框架，否则会报错
         permissionVersion();//权限判断
 
+
     }
+
+
 
     /**
      * 定位结果返回
@@ -63,7 +73,35 @@ public class MainActivity extends AppCompatActivity {
             String locationDescribe = location.getLocationDescribe();    //获取位置描述信息
             Log.w("TAG","address ========= " + addr);
             tvAddress.setText(addr);//设置文本显示
+
+            Log.w("TAG","latitude ========= " + latitude);
+            Log.w("TAG","longitude ========= " + longitude);
+            getTodayWeather(longitude,latitude);
         }
+    }
+    /**
+     * 获取本地实时天气
+     * @param longitude  经度
+     * @param latitude   纬度
+     */
+    private void getTodayWeather(double longitude,double latitude){
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("https://devapi.qweather.com/v7/weather/now?key=66d721a1d6024ca8b6c257fcab036de7&location="+longitude+","+latitude)
+                .build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                ToastUtils.showLongToast(MainActivity.this,"网络请求失败");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e("TAG","code==========="+response.code());
+                Log.e("TAG","body==========="+response.body().string());
+            }
+        });
+
     }
 
 
@@ -94,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
     //开始定位
     private void startLocation() {
         //声明LocationClient类
-//        mLocationClient  = new LocationClient(this);
         LocationClient.setAgreePrivacy(true);
         try {
             mLocationClient  = new LocationClient(this);
@@ -116,6 +153,4 @@ public class MainActivity extends AppCompatActivity {
         mLocationClient.start();
 
     }
-
-
 }
