@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/main_background"
-            android:scaleType="fitStart"
+            android:scaleType="centerCrop"
             />
         <View
             android:layout_width="match_parent"
@@ -115,6 +115,71 @@
                     android:textSize="20dp"
                     />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rc_futureWeather"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:overScrollMode="never"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="生活指数"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            />
+                        <TextView
+                            android:id="@+id/tv_life_index"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_10"
+                            android:text="内容"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="洗车指数"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            />
+                        <TextView
+                            android:id="@+id/tv_car"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_10"
+                            android:text="内容"
+                            />
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="700dp"
+                        android:background="@color/teal_200"
+                        />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

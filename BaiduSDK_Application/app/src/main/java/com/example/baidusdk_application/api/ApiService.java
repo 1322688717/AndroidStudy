@@ -1,6 +1,8 @@
 package com.example.baidusdk_application.api;
 
 
+import com.example.baidusdk_application.bean.FutureWeatherResponse;
+import com.example.baidusdk_application.bean.LifeIndexResponse;
 import com.example.baidusdk_application.bean.TodayResponse;
 
 import retrofit2.Call;
@@ -27,6 +29,12 @@ public interface ApiService {
     //https://devapi.qweather.com/v7/weather/now?key=66d721a1d6024ca8b6c257fcab036de7&location=116.41,39.92
     @GET("/v7/weather/now?key=66d721a1d6024ca8b6c257fcab036de7")
     Call<TodayResponse> getTodayWeather(@Query("location") String location);
+
+    @GET("/v7/weather/3d?key=66d721a1d6024ca8b6c257fcab036de7")
+    Call<FutureWeatherResponse> getFutureWeather(@Query("location") String location);
+
+    @GET("/v7/indices/1d?type=1,2&key=66d721a1d6024ca8b6c257fcab036de7")
+    Call<LifeIndexResponse> getLifeIndex(@Query("location") String location);
 
 
 
