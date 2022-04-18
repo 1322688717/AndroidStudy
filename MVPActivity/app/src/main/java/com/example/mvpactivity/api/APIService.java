@@ -1,11 +1,4 @@
-package com.example.baidusdk_application.api;
-
-
-import com.example.baidusdk_application.bean.TodayResponse;
-
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Query;
+package com.example.mvpactivity.api;
 
 /**
  * API服务接口
@@ -24,18 +17,6 @@ public interface ApiService {
      * @param location  区/县
      * @return
      */
-    //https://devapi.qweather.com/v7/weather/now?key=66d721a1d6024ca8b6c257fcab036de7&location=116.41,39.92
-    @GET("/v7/weather/now?key=66d721a1d6024ca8b6c257fcab036de7")
+    @GET("/s6/weather/now?key=3086e91d66c04ce588a7f538f917c7f4")
     Call<TodayResponse> getTodayWeather(@Query("location") String location);
-
-
-
-
-
-
-
-
-
-
-
 }

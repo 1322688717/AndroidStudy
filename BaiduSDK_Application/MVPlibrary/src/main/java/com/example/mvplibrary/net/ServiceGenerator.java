@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceGenerator {
     //https://free-api.heweather.net/s6/weather/now?key=3086e91d66c04ce588a7f538f917c7f4&location=深圳
     //将上方的API接口地址进行拆分得到不变的一部分,实际开发中可以将这一部分作为服务器的ip访问地址
-    public static String BASE_URL = "https://devapi.qweather.com/";//地址
+    public static String BASE_URL = "https://devapi.qweather.com";//地址
 
     //创建服务  参数就是API服务
     public static <T> T createService(Class<T> serviceClass) {
