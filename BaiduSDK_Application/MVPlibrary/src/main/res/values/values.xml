@@ -4,3 +4,4 @@
         <attr name="WindsColor" format="color|reference"/>
     </declare-styleable>
 </resources>
+
