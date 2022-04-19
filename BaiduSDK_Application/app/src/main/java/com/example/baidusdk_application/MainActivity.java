@@ -4,6 +4,7 @@ import android.Manifest;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -66,6 +68,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     WhiteWinds wwBig;
     @BindView(R.id.ww_small)
     WhiteWinds wwSmall;
+    @BindView(R.id.img_city)
+    ImageView imgCity;
 
     private static final String TAG = "MainActivity";
     private RxPermissions rxPermissions;//权限请求框架
@@ -240,6 +244,10 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         LinearLayoutManager manager = new LinearLayoutManager(context);
         rcFutureWeather.setLayoutManager(manager);
         rcFutureWeather.setAdapter(mAdapter);
+    }
+
+    @OnClick(R.id.img_city)
+    public void citySelect(){
 
     }
 
