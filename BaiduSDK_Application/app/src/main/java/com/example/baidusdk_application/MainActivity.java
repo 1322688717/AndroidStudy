@@ -24,6 +24,7 @@ import com.example.baidusdk_application.contract.WeatherContract;
 import com.example.baidusdk_application.utils.ToastUtils;
 import com.example.mvplibrary.mvp.MvpActivity;
 import com.example.mvplibrary.utils.StatusBarUtil;
+import com.example.mvplibrary.view.WhiteWinds;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.IOException;
@@ -57,6 +58,14 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     TextView tvCar;
     @BindView(R.id.tv_life_index)
     TextView tvLifeIndex;
+    @BindView(R.id.tv_windsDir)
+    TextView tvWindsDir;
+    @BindView(R.id.tv_windsScale)
+    TextView tvWindsScale;
+    @BindView(R.id.ww_big)
+    WhiteWinds wwBig;
+    @BindView(R.id.ww_small)
+    WhiteWinds wwSmall;
 
     private static final String TAG = "MainActivity";
     private RxPermissions rxPermissions;//权限请求框架
@@ -113,9 +122,9 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
             tvCity.setText(city);
             String locationid = longitude+","+latitude;
             Log.w(TAG,"locationid======="+locationid);
-            mPresent.todayWeather(context,locationid);
-            mPresent.getFutureWeather(context,locationid);
-            mPresent.getLifeIndex(context,locationid);
+            mPresent.todayWeather(context,locationid); //获取本日天气
+            mPresent.getFutureWeather(context,locationid); //获取未来天气
+            mPresent.getLifeIndex(context,locationid); //获取生活指数
         }
     }
 
@@ -148,6 +157,11 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         if (response.body().getNow().getTemp() != null) {
             tvTemperature.setText(response.body().getNow().getTemp() + "℃");
             tvWeather.setText(response.body().getNow().getText());
+            tvWindsDir.setText("风向   "+response.body().getNow().getWindDir());
+            tvWindsScale.setText("风力   "+response.body().getNow().getWindScale());
+            wwBig.startRotate();
+            wwSmall.startRotate();
+
         } else {
             ToastUtils.showLongToast(context, response.body().getCode());
         }
@@ -227,5 +241,12 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         rcFutureWeather.setLayoutManager(manager);
         rcFutureWeather.setAdapter(mAdapter);
 
+    }
+
+    @Override
+    public void onDestroy() {
+        wwSmall.stop();
+        wwBig.stop();
+        super.onDestroy();
     }
 }

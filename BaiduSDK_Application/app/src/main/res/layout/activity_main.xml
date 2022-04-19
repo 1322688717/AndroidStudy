@@ -38,12 +38,7 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay"
                 >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="toolbar"
-                    android:textColor="@color/white"
-                    />
+
 
 
             </androidx.appcompat.widget.Toolbar>
@@ -172,6 +167,46 @@
                             android:layout_marginRight="@dimen/dp_10"
                             android:text="内容"
                             />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        >
+                        <LinearLayout
+                            android:layout_width="140dp"
+                            android:layout_height="120dp">
+                            <com.example.mvplibrary.view.WhiteWinds
+                                android:id="@+id/ww_big"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"/>
+                            <com.example.mvplibrary.view.WhiteWinds
+                                android:id="@+id/ww_small"
+                                android:layout_width="50dp"
+                                android:layout_height="60dp"
+                                android:layout_gravity="bottom"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            >
+                            <TextView
+                                android:id="@+id/tv_windsDir"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="风向"
+                                />
+                            <TextView
+                                android:id="@+id/tv_windsScale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:text="风力"
+                                />
+                        </LinearLayout>
                     </LinearLayout>
                     <ImageView
                         android:layout_width="match_parent"
