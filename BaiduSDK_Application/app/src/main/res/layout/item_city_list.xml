@@ -4,7 +4,7 @@
     android:id="@+id/item_city"
     android:background="#FFF"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <!--显示省 、 市 、 区/县-->
     <TextView
         android:id="@+id/tv_city"

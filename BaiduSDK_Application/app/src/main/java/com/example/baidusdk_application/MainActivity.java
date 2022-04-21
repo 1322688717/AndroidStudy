@@ -1,6 +1,9 @@
 package com.example.baidusdk_application;
 
 import android.Manifest;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,11 +24,15 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.baidusdk_application.adapter.AreaAdapter;
 import com.example.baidusdk_application.adapter.CityAdapter;
 import com.example.baidusdk_application.adapter.FutureWeatherAdapter;
 import com.example.baidusdk_application.adapter.ProvinceAdapter;
+import com.example.baidusdk_application.bean.BiYingImgResponse;
 import com.example.baidusdk_application.bean.CityResponse;
 import com.example.baidusdk_application.bean.FutureWeatherResponse;
 import com.example.baidusdk_application.bean.LifeIndexResponse;
@@ -86,6 +95,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     WhiteWinds wwSmall;
     @BindView(R.id.img_city)
     ImageView imgCity;
+    @BindView(R.id.bg)
+    LinearLayout bg;
 
     private static final String TAG = "MainActivity";
     private RxPermissions rxPermissions;//权限请求框架
@@ -151,9 +162,11 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
             tvCity.setText(city);
             String locationid = longitude+","+latitude;
             Log.w(TAG,"locationid======="+locationid);
+            showLoadingDialog();
             mPresent.todayWeather(context,locationid); //获取本日天气
             mPresent.getFutureWeather(context,locationid); //获取未来天气
             mPresent.getLifeIndex(context,locationid); //获取生活指数
+            mPresent.getbiying(context); //获取每日一图
         }
     }
 
@@ -183,6 +196,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     @Override
     public void getTodayWeatherResult(retrofit2.Response<TodayResponse> response) {
         mLocationClient.stop();
+        dismissLoadingDialog();
         if (response.body().getNow().getTemp() != null) {
             tvTemperature.setText(response.body().getNow().getTemp() + "℃");
             tvWeather.setText(response.body().getNow().getText());
@@ -213,7 +227,28 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     }
 
     @Override
+    public void getbiying(Response<BiYingImgResponse> response) {
+        dismissLoadingDialog();
+        if (response.body().getImages() != null){
+            String imgurl = "https://cn.bing.com"+response.body().getImages().get(0).getUrl();
+            Glide.with(context)
+                    .asBitmap()
+                    .load(imgurl)
+                    .into(new SimpleTarget<Bitmap>() {
+                        @Override
+                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                            Drawable drawable = new BitmapDrawable(context.getResources(),resource);
+                            bg.setBackground(drawable);
+                        }
+                    });
+        }else {
+            ToastUtils.showLongToast(context,"数据为空");
+        }
+    }
+
+    @Override
     public void getDataFailed() {
+        dismissLoadingDialog();
         ToastUtils.showShortToast(context,"网络异常");//这里的context是框架中封装好的，等同于this
     }
 

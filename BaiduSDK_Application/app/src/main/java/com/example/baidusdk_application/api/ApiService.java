@@ -1,6 +1,7 @@
 package com.example.baidusdk_application.api;
 
 
+import com.example.baidusdk_application.bean.BiYingImgResponse;
 import com.example.baidusdk_application.bean.FutureWeatherResponse;
 import com.example.baidusdk_application.bean.LifeIndexResponse;
 import com.example.baidusdk_application.bean.TodayResponse;
@@ -35,6 +36,9 @@ public interface ApiService {
 
     @GET("/v7/indices/1d?type=1,2&key=66d721a1d6024ca8b6c257fcab036de7")
     Call<LifeIndexResponse> getLifeIndex(@Query("location") String location);
+
+    @GET("/HPImageArchive.aspx?format=js&idx=0&n=1")
+    Call<BiYingImgResponse> biying();
 
 
 

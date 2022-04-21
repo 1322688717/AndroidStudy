@@ -4,6 +4,7 @@ package com.example.baidusdk_application.contract;
 import android.content.Context;
 
 import com.example.baidusdk_application.api.ApiService;
+import com.example.baidusdk_application.bean.BiYingImgResponse;
 import com.example.baidusdk_application.bean.FutureWeatherResponse;
 import com.example.baidusdk_application.bean.LifeIndexResponse;
 import com.example.baidusdk_application.bean.TodayResponse;
@@ -13,6 +14,7 @@ import com.example.mvplibrary.net.NetCallBack;
 import com.example.mvplibrary.net.ServiceGenerator;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
@@ -29,7 +31,7 @@ public class WeatherContract {
          */
         public void todayWeather(final Context context, String locationid) {
             //得到构建之后的网络请求服务，这里的地址已经拼接完成，只差一个location了
-            ApiService service = ServiceGenerator.createService(ApiService.class);
+            ApiService service = ServiceGenerator.createService(ApiService.class,0);
             //设置请求回调  NetCallBack是重写请求回调
             service.getTodayWeather(locationid).enqueue(new NetCallBack<TodayResponse>() {
                 //成功回调
@@ -57,7 +59,7 @@ public class WeatherContract {
          * @param location
          */
         public void getFutureWeather(final Context context, String location) {
-            ApiService service = ServiceGenerator.createService(ApiService.class);
+            ApiService service = ServiceGenerator.createService(ApiService.class,0);
             service.getFutureWeather(location).enqueue(new NetCallBack<FutureWeatherResponse>() {
                 @Override
                 public void onSuccess(Call<FutureWeatherResponse> call, Response<FutureWeatherResponse> response) {
@@ -79,7 +81,7 @@ public class WeatherContract {
          * @param locaion
          */
         public void getLifeIndex(final Context context,String locaion){
-            ApiService service = ServiceGenerator.createService(ApiService.class);
+            ApiService service = ServiceGenerator.createService(ApiService.class,0);
             service.getLifeIndex(locaion).enqueue(new NetCallBack<LifeIndexResponse>() {
                 @Override
                 public void onSuccess(Call<LifeIndexResponse> call, Response<LifeIndexResponse> response) {
@@ -95,6 +97,28 @@ public class WeatherContract {
             });
         }
 
+        public void getbiying(Context context){
+            ApiService service = ServiceGenerator.createService(ApiService.class,1);
+            service.biying().enqueue(new Callback<BiYingImgResponse>() {
+                @Override
+                public void onResponse(Call<BiYingImgResponse> call, Response<BiYingImgResponse> response) {
+                    if (getView()!= null){
+                        getView().getbiying(response);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<BiYingImgResponse> call, Throwable t) {
+
+                    if (getView()!= null){
+                        getView().getDataFailed();
+                }
+                }
+            });
+        }
+
+
+
 
     }
 
@@ -107,6 +131,8 @@ public class WeatherContract {
 
         //获取生活指数
         void getLifeIndex(Response<LifeIndexResponse> response);
+
+        void getbiying(Response<BiYingImgResponse> response);
 
         //错误返回
         void getDataFailed();
