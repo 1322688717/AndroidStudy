@@ -44,6 +44,7 @@ import com.example.mvplibrary.utils.LiWindow;
 import com.example.mvplibrary.utils.RecyclerViewAnimation;
 import com.example.mvplibrary.utils.StatusBarUtil;
 import com.example.mvplibrary.view.WhiteWinds;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import org.json.JSONArray;
@@ -97,6 +98,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     ImageView imgCity;
     @BindView(R.id.bg)
     LinearLayout bg;
+    @BindView(R.id.smrf)
+    SmartRefreshLayout smrf;
 
     private static final String TAG = "MainActivity";
     private RxPermissions rxPermissions;//权限请求框架
@@ -167,6 +170,13 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
             mPresent.getFutureWeather(context,locationid); //获取未来天气
             mPresent.getLifeIndex(context,locationid); //获取生活指数
             mPresent.getbiying(context); //获取每日一图
+            smrf.setOnRefreshListener(refreshLayout ->
+            {
+                mPresent.todayWeather(context,locationid); //获取本日天气
+                mPresent.getFutureWeather(context,locationid); //获取未来天气
+                mPresent.getLifeIndex(context,locationid); //获取生活指数
+                mPresent.getbiying(context); //获取每日一图
+            });
         }
     }
 
@@ -198,6 +208,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         mLocationClient.stop();
         dismissLoadingDialog();
         if (response.body().getNow().getTemp() != null) {
+            smrf.finishRefresh();
             tvTemperature.setText(response.body().getNow().getTemp() + "℃");
             tvWeather.setText(response.body().getNow().getText());
             tvWindsDir.setText("风向   "+response.body().getNow().getWindDir());
@@ -249,6 +260,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     @Override
     public void getDataFailed() {
         dismissLoadingDialog();
+        smrf.finishRefresh();
         ToastUtils.showShortToast(context,"网络异常");//这里的context是框架中封装好的，等同于this
     }
 
