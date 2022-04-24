@@ -8,7 +8,7 @@
     android:gravity="center"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="@color/white"
+
     >
 
     <RelativeLayout
@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="@dimen/dp_23"
             android:layout_marginRight="@dimen/dp_10"
             android:layout_marginLeft="@dimen/dp_10"
             android:orientation="vertical"
@@ -26,21 +26,21 @@
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                app:contentInsetLeft="16dp"
+                app:contentInsetLeft="@dimen/dp_16"
                 app:popupTheme="@style/AppTheme.PopupOverlay"
                 >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_30"
                         android:background="@drawable/my"
                         android:backgroundTint="@color/white"
                         />
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
+                        android:layout_height="@dimen/dp_30"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:textSize="20dp"
@@ -48,8 +48,8 @@
                         />
                     <ImageView
                         android:id="@+id/img_city"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_30"
                         android:background="@drawable/city"
                         android:backgroundTint="@color/white"
                         android:scaleType="fitCenter"
@@ -88,7 +88,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="城市"
                                 android:textColor="@color/white"
-                                android:textSize="35dp"
+                                android:textSize="@dimen/dp_35"
                                 />
                             <TextView
                                 android:id="@+id/tv_temperature"
@@ -96,7 +96,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="温度"
                                 android:textColor="@color/white"
-                                android:textSize="50dp"
+                                android:textSize="@dimen/dp_50"
                                 />
                             <TextView
                                 android:id="@+id/tv_weather"
@@ -104,7 +104,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="局部多云"
                                 android:textColor="@color/white"
-                                android:textSize="20dp"
+                                android:textSize="@dimen/dp_20"
                                 />
                         </LinearLayout>
                         <LinearLayout
@@ -115,9 +115,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="最高"
+                                android:text="@string/maxTem"
                                 android:textColor="@color/white"
-                                android:textSize="20dp"
+                                android:textSize="@dimen/dp_20"
                                 />
                             <TextView
                                 android:id="@+id/tv_top_temperature"
@@ -125,14 +125,14 @@
                                 android:layout_height="wrap_content"
                                 android:text="19℃"
                                 android:textColor="@color/white"
-                                android:textSize="20dp"
+                                android:textSize="@dimen/dp_20"
                                 />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="最低"
+                                android:text="@string/minTem"
                                 android:textColor="@color/white"
-                                android:textSize="20dp"
+                                android:textSize="@dimen/dp_20"
                                 />
                             <TextView
                                 android:id="@+id/low_temperature"
@@ -140,14 +140,14 @@
                                 android:layout_height="wrap_content"
                                 android:text="3℃"
                                 android:textColor="@color/white"
-                                android:textSize="20dp"
+                                android:textSize="@dimen/dp_20"
                                 />
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dp_10">
-                            <androidx.recyclerview.widget.RecyclerView
+                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rc_futureWeather"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"/>
@@ -166,14 +166,14 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="生活指数"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/dp_20"
                                     android:layout_marginLeft="@dimen/dp_10"
                                     />
                                 <TextView
                                     android:id="@+id/tv_life_index"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/dp_20"
                                     android:layout_marginLeft="@dimen/dp_10"
                                     android:layout_marginRight="@dimen/dp_10"
                                     android:text="内容"
@@ -187,7 +187,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="洗车指数"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/dp_20"
                                     android:layout_marginLeft="@dimen/dp_10"
                                     />
                                 <TextView
@@ -196,7 +196,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="@dimen/dp_10"
                                     android:layout_marginRight="@dimen/dp_10"
-                                    android:textSize="20dp"
+                                    android:textSize="@dimen/dp_20"
                                     android:text="内容"
                                     />
                             </LinearLayout>
@@ -206,7 +206,7 @@
                                 android:layout_marginTop="@dimen/dp_10"
                                 >
                                 <LinearLayout
-                                    android:layout_width="140dp"
+                                    android:layout_width="@dimen/dp_150"
                                     android:layout_height="120dp">
                                     <com.example.mvplibrary.view.WhiteWinds
                                         android:id="@+id/ww_big"
@@ -214,8 +214,8 @@
                                         android:layout_height="120dp"/>
                                     <com.example.mvplibrary.view.WhiteWinds
                                         android:id="@+id/ww_small"
-                                        android:layout_width="50dp"
-                                        android:layout_height="60dp"
+                                        android:layout_width="@dimen/dp_50"
+                                        android:layout_height="@dimen/dp_60"
                                         android:layout_gravity="bottom"/>
                                 </LinearLayout>
                                 <LinearLayout
@@ -242,8 +242,8 @@
                             </LinearLayout>
                         </LinearLayout>
                         <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="300dp"
+                            android:layout_width="@dimen/dp_50"
+                            android:layout_height="@dimen/dp_300"
                             android:background="@color/teal_200"
                             />
 

@@ -13,6 +13,45 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class FutureWeatherResponse {
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getFxLink() {
+        return fxLink;
+    }
+
+    public void setFxLink(String fxLink) {
+        this.fxLink = fxLink;
+    }
+
+    public List<DailyDTO> getDaily() {
+        return daily;
+    }
+
+    public void setDaily(List<DailyDTO> daily) {
+        this.daily = daily;
+    }
+
+    public ReferDTO getRefer() {
+        return refer;
+    }
+
+    public void setRefer(ReferDTO refer) {
+        this.refer = refer;
+    }
 
     @SerializedName("code")
     private String code;

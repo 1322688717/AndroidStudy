@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
      * focusableInTouchMode 用于控制试图在触摸模式下是否可以聚焦
      * @param savedInstanceState
      */
-    @Bind(R.id.img_view)
+    //@Bind(R.id.img_view)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

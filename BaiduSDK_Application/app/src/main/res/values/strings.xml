@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BaiduSDK_Application</string>
+    <string name="minTem">最低</string>
+    <string name="maxTem">最高</string>
 </resources>

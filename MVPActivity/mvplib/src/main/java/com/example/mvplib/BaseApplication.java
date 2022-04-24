@@ -1,8 +1,9 @@
 package com.example.mvplib;
 
 
+import android.app.Application;
 
-    /**
+/**
      * 工程管理
      */
     public class BaseApplication extends Application {

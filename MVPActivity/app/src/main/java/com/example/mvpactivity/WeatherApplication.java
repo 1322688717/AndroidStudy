@@ -1,6 +1,13 @@
 package com.example.mvpactivity;
 
 
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+
+import com.example.mvplib.BaseApplication;
+import com.example.mvplib.utils.ActivityManager;
+
 public class WeatherApplication extends BaseApplication {
 
     /**
