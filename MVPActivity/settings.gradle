@@ -1,3 +1,0 @@
-include ':mvplib'
-include ':app'
-rootProject.name = "MVPActivity"

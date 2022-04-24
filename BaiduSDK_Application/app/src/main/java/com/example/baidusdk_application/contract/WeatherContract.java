@@ -19,9 +19,13 @@ import retrofit2.Response;
 
 /**
  * 天气订阅器
+ *
  */
 public class WeatherContract {
 
+    /**
+     * personer 层
+     */
     public static class WeatherPresenter extends BasePresenter<IWeatherView> {
         /**
          * 当日天气
@@ -122,6 +126,9 @@ public class WeatherContract {
 
     }
 
+    /**
+     * view 层
+     */
     public interface IWeatherView extends BaseView {
         //将数据放入实体
         void getTodayWeatherResult(Response<TodayResponse> response);

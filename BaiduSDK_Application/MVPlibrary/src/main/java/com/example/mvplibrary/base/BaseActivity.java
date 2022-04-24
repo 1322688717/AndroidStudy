@@ -4,6 +4,7 @@ package com.example.mvplibrary.base;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity implements UICallBa
         initBeforeView(savedInstanceState);
         this.context = this;
         //添加继承这个BaseActivity的Activity
+        Log.w("TAG","this=========="+this);
         BaseApplication.getActivityManager().addActivity(this);
         if (getLayoutId() > 0) {
             setContentView(getLayoutId());

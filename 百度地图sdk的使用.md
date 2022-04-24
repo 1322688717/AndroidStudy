@@ -9,17 +9,14 @@
 
 ### 2.添加依赖
 
-* 网络请求
-
-* 图片加载
-
-* 状态栏
-
+* 网络请求 okhttp+retofit
+* 图片加载 Gilde
+* 状态栏 statusBar
 * 二维码
-
-* ```java
-  butterknife
-  ```
+* 绑定视图插件butterknife	
+* 刷新SmartRefreshLayout
+* recyvlerView 视图
+* 
 
 ### 3.初始化工程
 
