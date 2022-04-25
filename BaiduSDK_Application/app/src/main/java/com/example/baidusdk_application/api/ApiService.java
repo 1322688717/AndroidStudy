@@ -27,7 +27,6 @@ public interface ApiService {
      * @param location  区/县
      * @return
      */
-    //https://devapi.qweather.com/v7/weather/now?key=66d721a1d6024ca8b6c257fcab036de7&location=116.41,39.92
     @GET("/v7/weather/now?key=66d721a1d6024ca8b6c257fcab036de7")
     Call<TodayResponse> getTodayWeather(@Query("location") String location);
 

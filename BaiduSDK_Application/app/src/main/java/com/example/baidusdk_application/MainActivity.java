@@ -40,6 +40,7 @@ import com.example.baidusdk_application.bean.TodayResponse;
 import com.example.baidusdk_application.contract.WeatherContract;
 import com.example.baidusdk_application.utils.ToastUtils;
 import com.example.mvplibrary.mvp.MvpActivity;
+import com.example.mvplibrary.utils.CityUtil;
 import com.example.mvplibrary.utils.LiWindow;
 import com.example.mvplibrary.utils.RecyclerViewAnimation;
 import com.example.mvplibrary.utils.StatusBarUtil;
@@ -340,6 +341,10 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         liWindow.showRightPopupWindow(view);
         initCityData(recyclerView,areaBack,cityBack,windowTitle);
     }
+
+
+
+
     /**
      * 省市县数据渲染
      * @param recyclerView  列表
@@ -349,17 +354,11 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
      */
     private void initCityData(RecyclerView recyclerView,ImageView areaBack,ImageView cityBack,TextView windowTitle) {
         //初始化省数据 读取省数据并显示到列表中
-        try {
-            InputStream inputStream = getResources().getAssets().open("City.txt");//读取数据
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuffer stringBuffer = new StringBuffer();
-            String lines = bufferedReader.readLine();
-            while (lines != null) {
-                stringBuffer.append(lines);
-                lines = bufferedReader.readLine();
-            }
+        CityUtil.getInstance().init(context);
 
-            final JSONArray Data = new JSONArray(stringBuffer.toString());
+
+        try {
+            final JSONArray Data = CityUtil.getInstance().getData();
             Log.w(TAG,"Data====="+Data);
             //循环这个文件数组、获取数组中每个省对象的名字
             for (int i = 0; i < Data.length(); i++) {
@@ -372,7 +371,6 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
 
             //定义省份显示适配器
             provinceAdapter = new ProvinceAdapter(R.layout.item_city_list, provinceList);
-            Log.w(TAG,"provinceList======="+provinceList);
             LinearLayoutManager manager = new LinearLayoutManager(context);
             recyclerView.setLayoutManager(manager);
             recyclerView.setAdapter(provinceAdapter);
@@ -489,8 +487,6 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                     }
                 }
             });
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
