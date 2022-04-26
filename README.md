@@ -17,18 +17,23 @@
 
 * ```
    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
-      implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-  ```
-
-* 支持okhttp
+   ```
+  
+* 支持okhttp+retrofit+rxjava
 
 * ```
-  implementation 'com.squareup.okhttp3:okhttp:3.14.9'
+      // Okhttp库
+      implementation 'com.squareup.okhttp3:okhttp:3.14.9'
+      // Retrofit库
       implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+      //日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+      //添加retrofit gson转换会自动下载gson
       implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-      implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+      //RxJava依赖
+      implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
   ```
-
+  
 *  阿里巴巴FastJson
 
 * ```

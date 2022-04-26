@@ -20,6 +20,7 @@ public abstract class BaseActivity extends AppCompatActivity implements UICallBa
         super.onCreate(savedInstanceState);
         initBeforeView(savedInstanceState);
         this.activity = this;
+
         BaseApplication.getActivityManager().addActivity(this);
         if(getLayout()>0){
             setContentView(getLayout());

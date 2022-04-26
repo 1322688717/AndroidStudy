@@ -1,6 +1,7 @@
 package com.example.baidusdk_application;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -37,6 +38,7 @@ import com.example.baidusdk_application.bean.LifeIndexResponse;
 import com.example.baidusdk_application.bean.TodayResponse;
 import com.example.baidusdk_application.contract.WeatherContract;
 import com.example.baidusdk_application.utils.Analysis;
+import com.example.baidusdk_application.utils.LocationUtil;
 import com.example.baidusdk_application.utils.ToastUtils;
 import com.example.mvplibrary.mvp.MvpActivity;
 import com.example.mvplibrary.utils.CityUtil;
@@ -58,7 +60,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import retrofit2.Response;
 
-public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> implements WeatherContract.IWeatherView {
+public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> implements WeatherContract.IWeatherView,  Analysis.ICityListener, LocationUtil.Ilocation {
 
     @BindView(R.id.tv_city)
     TextView tvCity;
@@ -98,15 +100,12 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
 //    private List<CityResponse> provinceList;//省列表数据
 //    private List<CityResponse.CityBean> citylist;//市列表数据
 //    private List<CityResponse.CityBean.AreaBean> arealist;//区/县列表数据
-    ProvinceAdapter provinceAdapter;//省数据适配器
-    AreaAdapter areaAdapter;//县/区数据适配器
-    String provinceTitle;//标题
-    LiWindow liWindow;//自定义弹窗
-    //定位器
-    public LocationClient mLocationClient = null;
-    private MyLocationListener myListener = new MyLocationListener();
+
+
     private List<FutureWeatherResponse.DailyDTO> mList = new ArrayList<>();
     private FutureWeatherAdapter mAdapter;
+    LocationClient mLocationClient;
+
 
 
     @Override
@@ -128,47 +127,49 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         return new WeatherContract.WeatherPresenter();
     }
 
-    /**
-     * 定位结果返回
-     */
-    private class MyLocationListener extends BDAbstractLocationListener {
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-            double latitude = location.getLatitude();    //获取纬度信息
-            double longitude = location.getLongitude();    //获取经度信息
-            float radius = location.getRadius();    //获取定位精度，默认值为0.0f
-            String coorType = location.getCoorType();
-            //获取经纬度坐标类型，以LocationClientOption中设置过的坐标类型为准
-            int errorCode = location.getLocType();//161  表示网络定位结果
-            //获取定位类型、定位错误返回码，具体信息可参照类参考中BDLocation类中的说明
-            String addr = location.getAddrStr();    //获取详细地址信息
-            String country = location.getCountry();    //获取国家
-            String province = location.getProvince();    //获取省份
-            String city = location.getCity();    //获取城市
-            String district = location.getDistrict();    //获取区县
-            String street = location.getStreet();    //获取街道信息
-            String locationDescribe = location.getLocationDescribe();    //获取位置描述信息
-            Log.w(TAG, "address ========= " + addr);
-            Log.w(TAG, "latitude ========= " + latitude);
-            Log.w(TAG, "longitude ========= " + longitude);
-            //getTodayWeather(longitude, latitude);
-            tvCity.setText(city);
-            String locationid = longitude+","+latitude;
-            Log.w(TAG,"locationid======="+locationid);
-            showLoadingDialog();
-            mPresent.todayWeather(context,locationid); //获取本日天气
-            mPresent.getFutureWeather(context,locationid); //获取未来天气
-            mPresent.getLifeIndex(context,locationid); //获取生活指数
-            mPresent.getbiying(context); //获取每日一图
-            smrf.setOnRefreshListener(refreshLayout ->
-            {
-                mPresent.todayWeather(context,locationid); //获取本日天气
-                mPresent.getFutureWeather(context,locationid); //获取未来天气
-                mPresent.getLifeIndex(context,locationid); //获取生活指数
-                mPresent.getbiying(context); //获取每日一图
-            });
+
+    private void permissionVersion() {
+        if (Build.VERSION.SDK_INT >= 23) {//6.0或6.0以上
+            //动态权限申请
+            permissionsRequest();
+
+        } else {//6.0以下
+            //发现只要权限在AndroidManifest.xml中注册过，均会认为该权限granted  提示一下即可
+            ToastUtils.showLongToast(this, "你的版本在Android6.0以下，不需要动态申请权限。");
         }
     }
+
+    @SuppressLint("CheckResult")
+    private void permissionsRequest() {
+        rxPermissions.request(Manifest.permission.ACCESS_FINE_LOCATION)
+                .subscribe(granted -> {
+                    if (granted) {//申请成功
+                        //得到权限后开始定位
+                        showLoadingDialog();
+                        LocationUtil.getInstance().startLocation(context);
+                    } else {//申请失败
+                        ToastUtils.showShortToast(this, "权限未开启");
+                    }
+                });
+    }
+
+    /**
+     * 定位成功的回调
+     * @param city  返回本地所在城市
+     * @param locationid  返回本地经纬度
+     * @param mLocationClient   返回LocationClient实例
+     */
+    @Override
+    public void SuccessLocation(String city, String locationid,LocationClient mLocationClient) {
+        tvCity.setText(city);
+        mPresent.getFutureWeather(context,locationid);
+        mPresent.getLifeIndex(context,locationid);
+        mPresent.getLifeIndex(context,locationid);
+        this.mLocationClient = mLocationClient;
+    }
+
+
+
 
     /**
      * 获取未来三天天气
@@ -227,6 +228,10 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         }
     }
 
+    /**
+     * 获取背景图片
+     * @param response
+     */
     @Override
     public void getbiying(Response<BiYingImgResponse> response) {
         dismissLoadingDialog();
@@ -247,60 +252,6 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         }
     }
 
-    @Override
-    public void getDataFailed() {
-        dismissLoadingDialog();
-        smrf.finishRefresh();
-        ToastUtils.showShortToast(context,"网络异常");//这里的context是框架中封装好的，等同于this
-    }
-
-    private void permissionVersion() {
-        if (Build.VERSION.SDK_INT >= 23) {//6.0或6.0以上
-            //动态权限申请
-            permissionsRequest();
-
-        } else {//6.0以下
-            //发现只要权限在AndroidManifest.xml中注册过，均会认为该权限granted  提示一下即可
-            ToastUtils.showLongToast(this, "你的版本在Android6.0以下，不需要动态申请权限。");
-        }
-    }
-
-    private void permissionsRequest() {
-        rxPermissions.request(Manifest.permission.ACCESS_FINE_LOCATION)
-                .subscribe(granted -> {
-                    if (granted) {//申请成功
-                        //得到权限后开始定位
-                        startLocation();
-                    } else {//申请失败
-                        ToastUtils.showShortToast(this, "权限未开启");
-                    }
-                });
-    }
-
-    //开始定位
-    private void startLocation() {
-        //声明LocationClient类
-        LocationClient.setAgreePrivacy(true);
-        try {
-            mLocationClient = new LocationClient(this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //注册监听函数
-        mLocationClient.registerLocationListener(myListener);
-        LocationClientOption option = new LocationClientOption();
-
-        //如果开发者需要获得当前点的地址信息，此处必须为true
-        option.setIsNeedAddress(true);
-        //可选，设置是否需要最新版本的地址信息。默认不需要，即参数为false
-        option.setNeedNewVersionRgc(true);
-        //mLocationClient为第二步初始化过的LocationClient对象
-        //需将配置好的LocationClientOption对象，通过setLocOption方法传递给LocationClient对象使用
-        mLocationClient.setLocOption(option);
-        //启动定位
-        mLocationClient.start();
-
-    }
 
     /**
      * 初始化rc
@@ -313,172 +264,24 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         rcFutureWeather.setAdapter(mAdapter);
     }
 
+    /**
+     * 点击选择地区按钮
+     */
     @OnClick(R.id.img_city)
     public void citySelect(){
-        showCityWindow();
-    }
-    /**
-     * 城市弹窗
-     */
-    private void showCityWindow() {
-
-        liWindow = new LiWindow(context);
-        final View view = LayoutInflater.from(context).inflate(R.layout.window_city_list, null);
-        ImageView areaBack = view.findViewById(R.id.iv_back_area);
-        ImageView cityBack = view.findViewById(R.id.iv_back_city);
-        RecyclerView rv = view.findViewById(R.id.rv);
-        TextView windowTitle = view.findViewById(R.id.tv_title);
-        liWindow.showRightPopupWindow(view);
-        initCityData(rv,windowTitle,cityBack,areaBack);
+        Analysis.getInstance().showCityWindow(MainActivity.this,context);
     }
 
 
-    /**
-     * 显示省份列表
-     * @param recyclerView
-     * @param windowTitle
-     * @param cityBack
-     * @param areaBack
-     */
-    private void initCityData(RecyclerView recyclerView, TextView windowTitle,ImageView cityBack,ImageView areaBack) {
-        //初始化省数据 读取省数据并显示到列表中
-        CityUtil.getInstance().init(context);
-        List<CityUtil.ProvinceBean> provincelist = CityUtil.getInstance().getAllProvince();
-        //定义省份显示适配器
-        provinceAdapter = new ProvinceAdapter(R.layout.item_city_list, provincelist);
-        LinearLayoutManager manager = new LinearLayoutManager(context);
-        recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(provinceAdapter);
-        provinceAdapter.notifyDataSetChanged();
-        RecyclerViewAnimation.runLayoutAnimationRight(recyclerView);//动画展示
 
-        provinceAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener(){
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int positionProvince) {
-                windowTitle.setText(provincelist.get(positionProvince).name);
-                showCityList(provinceAdapter, positionProvince,recyclerView,windowTitle,cityBack,areaBack,provincelist);
-            }
-        });
+    //选择地区
+    @Override
+    public void onSelected(String name,String location) {
+        mPresent.todayWeather(context,location);//今日天气
+        mPresent.getFutureWeather(context, location);//天气预报
+        mPresent.getLifeIndex(context, location);//生活指数
+        tvCity.setText(name);
     }
-
-    /**
-     * 显示城市列表
-     * @param provinceAdapter
-     * @param positionProvince
-     * @param recyclerView
-     * @param windowTitle
-     * @param cityBack
-     * @param areaBack
-     * @param provincelist
-     */
-    void showCityList(ProvinceAdapter provinceAdapter, int positionProvince,RecyclerView recyclerView, TextView windowTitle,ImageView cityBack,ImageView areaBack,List<CityUtil.ProvinceBean> provincelist){
-        //返回上一级数据
-        setBack2Province(provinceAdapter,cityBack,recyclerView,windowTitle);
-
-        //定义城市列表
-        List<CityUtil.CityBean> citylist = CityUtil.getInstance().getCities(positionProvince);
-
-        CityAdapter cityAdapter = new CityAdapter(R.layout.item_city_list, citylist);
-        LinearLayoutManager manager1 = new LinearLayoutManager(context);
-        recyclerView.setLayoutManager(manager1);
-        recyclerView.setAdapter(cityAdapter);
-        cityAdapter.notifyDataSetChanged();
-        RecyclerViewAnimation.runLayoutAnimationRight(recyclerView);
-
-        cityAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-
-                String cityTitle = provincelist.get(positionProvince).name;
-                String provinceTitle = provincelist.get(positionProvince).citylist.get(position).name;
-                windowTitle.setText(provinceTitle);
-                setBack2City(cityAdapter,areaBack,recyclerView,windowTitle,cityTitle);
-
-                onCityClick(cityAdapter,position,positionProvince,recyclerView,provincelist);
-
-
-            }
-        });
-    }
-
-    /**
-     * 显示区列表
-     * @param cityAdapter
-     * @param cityPostiion
-     * @param positionProvince
-     * @param recyclerView
-     * @param provincelist
-     */
-    void onCityClick(CityAdapter cityAdapter, int cityPostiion, int positionProvince,RecyclerView recyclerView,List<CityUtil.ProvinceBean> provincelist){
-        List<CityUtil.AreaBean> arealist = CityUtil.getInstance().getAreas(cityPostiion,positionProvince);
-        Log.w("TAG","arealist======="+arealist);
-        AreaAdapter areaAdapter = new AreaAdapter(R.layout.item_city_list, arealist);
-        LinearLayoutManager manager2 = new LinearLayoutManager(context);
-
-        recyclerView.setLayoutManager(manager2);
-        recyclerView.setAdapter(areaAdapter);
-        areaAdapter.notifyDataSetChanged();
-        RecyclerViewAnimation.runLayoutAnimationRight(recyclerView);
-
-        areaAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-//                                        Log.w(TAG,"位置===="+arealist.get(position).getName());
-                mPresent.todayWeather(context,"101010100");//今日天气
-                mPresent.getFutureWeather(context, "101010100");//天气预报
-                mPresent.getLifeIndex(context, "101010100");//生活指数
-                tvCity.setText(arealist.get(position).name);
-                liWindow.closePopupWindow();
-
-            }
-        });
-    }
-
-
-    /**
-     * 返回城市
-     * @param cityAdapter
-     * @param areaBack
-     * @param recyclerView
-     * @param windowTitle
-     * @param provinceTitle
-     */
-    void setBack2City(CityAdapter cityAdapter,ImageView areaBack,RecyclerView recyclerView,TextView windowTitle,String provinceTitle){
-        //返回上一级数据
-        areaBack.setVisibility(View.VISIBLE);
-        areaBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                recyclerView.setAdapter(cityAdapter);
-                cityAdapter.notifyDataSetChanged();
-                areaBack.setVisibility(View.GONE);
-                windowTitle.setText(provinceTitle);
-                //arealist.clear();
-            }
-        });
-
-    }
-
-    /**
-     * 返回省份
-     * @param provinceAdapter
-     * @param cityBack
-     * @param recyclerView
-     * @param windowTitle
-     */
-    void setBack2Province(ProvinceAdapter provinceAdapter,ImageView cityBack,RecyclerView recyclerView,TextView windowTitle){
-        cityBack.setVisibility(View.VISIBLE);
-        cityBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                recyclerView.setAdapter(provinceAdapter);
-                provinceAdapter.notifyDataSetChanged();
-                cityBack.setVisibility(View.GONE);
-                windowTitle.setText("中国");
-            }
-        });
-    }
-
 
 
 
@@ -487,5 +290,12 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         wwSmall.stop();
         wwBig.stop();
         super.onDestroy();
+    }
+
+    @Override
+    public void getDataFailed() {
+        dismissLoadingDialog();
+        smrf.finishRefresh();
+        ToastUtils.showShortToast(context,"网络异常");//这里的context是框架中封装好的，等同于this
     }
 }
