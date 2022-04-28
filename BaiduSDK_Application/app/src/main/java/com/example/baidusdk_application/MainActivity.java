@@ -8,8 +8,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,20 +17,12 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.baidu.location.BDAbstractLocationListener;
-import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.example.baidusdk_application.adapter.AreaAdapter;
-import com.example.baidusdk_application.adapter.CityAdapter;
 import com.example.baidusdk_application.adapter.FutureWeatherAdapter;
-import com.example.baidusdk_application.adapter.ProvinceAdapter;
 import com.example.baidusdk_application.bean.BiYingImgResponse;
-import com.example.baidusdk_application.bean.CityResponse;
 import com.example.baidusdk_application.bean.FutureWeatherResponse;
 import com.example.baidusdk_application.bean.LifeIndexResponse;
 import com.example.baidusdk_application.bean.TodayResponse;
@@ -41,17 +31,10 @@ import com.example.baidusdk_application.utils.Analysis;
 import com.example.baidusdk_application.utils.LocationUtil;
 import com.example.baidusdk_application.utils.ToastUtils;
 import com.example.mvplibrary.mvp.MvpActivity;
-import com.example.mvplibrary.utils.CityUtil;
-import com.example.mvplibrary.utils.LiWindow;
-import com.example.mvplibrary.utils.RecyclerViewAnimation;
 import com.example.mvplibrary.utils.StatusBarUtil;
 import com.example.mvplibrary.view.WhiteWinds;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.tbruyelle.rxpermissions2.RxPermissions;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +43,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import retrofit2.Response;
 
-public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> implements WeatherContract.IWeatherView,  Analysis.ICityListener, LocationUtil.Ilocation {
+public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> implements WeatherContract.IWeatherView,  Analysis.ICityListener, LocationUtil.ILocationListener {
 
     @BindView(R.id.tv_city)
     TextView tvCity;
@@ -146,11 +129,16 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                     if (granted) {//申请成功
                         //得到权限后开始定位
                         showLoadingDialog();
-                        LocationUtil.getInstance().startLocation(context);
+                        LocationUtil.getInstance().startLocation(context, this);
                     } else {//申请失败
                         ToastUtils.showShortToast(this, "权限未开启");
                     }
                 });
+    }
+
+    @Override
+    public void Err(String msg) {
+        ToastUtils.showLongToast(this,msg);
     }
 
     /**

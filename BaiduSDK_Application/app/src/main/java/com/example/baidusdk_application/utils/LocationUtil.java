@@ -25,10 +25,11 @@ public class LocationUtil {
 
     private MyLocationListener myListener = new MyLocationListener();
 
-    public interface Ilocation{
+    public interface ILocationListener {
+        void Err(String msg);
         void SuccessLocation(String city,String locationid,LocationClient locationClient);
     }
-    Ilocation mIlocation;
+    ILocationListener mLocationListener;
 
     /**
      * 定位结果返回
@@ -58,20 +59,25 @@ public class LocationUtil {
             String locationid = longitude+","+latitude;
             Log.w(TAG,"locationid======="+locationid);
             Log.w(TAG, "mLocationClient ========= " + mLocationClient);
-            mIlocation.SuccessLocation(city,locationid,mLocationClient);
+            mLocationListener.SuccessLocation(city,locationid,mLocationClient);
         }
     }
 
 
     //开始定位
-    public void startLocation(Context context) {
+    public void startLocation(Context context, ILocationListener listener) {
+        mLocationListener = listener;
+
         //声明LocationClient类
         LocationClient.setAgreePrivacy(true);
         try {
             mLocationClient = new LocationClient(context);
         } catch (Exception e) {
+            mLocationListener.Err(e.getLocalizedMessage());
             e.printStackTrace();
+            return;
         }
+
         //注册监听函数
         mLocationClient.registerLocationListener(myListener);
         LocationClientOption option = new LocationClientOption();
