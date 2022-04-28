@@ -75,6 +75,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     LinearLayout bg;
     @BindView(R.id.smrf)
     SmartRefreshLayout smrf;
+    @BindView(R.id.img_background)
+    ImageView imgBackground;
 
 
     private static final String TAG = "MainActivity";
@@ -130,6 +132,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                         //得到权限后开始定位
                         showLoadingDialog();
                         LocationUtil.getInstance().startLocation(context, this);
+
                     } else {//申请失败
                         ToastUtils.showShortToast(this, "权限未开启");
                     }
@@ -153,6 +156,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         mPresent.getFutureWeather(context,locationid);
         mPresent.getLifeIndex(context,locationid);
         mPresent.getLifeIndex(context,locationid);
+        mPresent.getbiying(context);
         this.mLocationClient = mLocationClient;
     }
 
@@ -232,7 +236,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                         @Override
                         public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                             Drawable drawable = new BitmapDrawable(context.getResources(),resource);
-                            bg.setBackground(drawable);
+                            //bg.setBackground(drawable);
+                            imgBackground.setBackground(drawable);
                         }
                     });
         }else {
@@ -257,7 +262,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
      */
     @OnClick(R.id.img_city)
     public void citySelect(){
-        Analysis.getInstance().showCityWindow(MainActivity.this,context);
+        Analysis.getInstance().showCityWindow(MainActivity.this,context,this);
     }
 
 

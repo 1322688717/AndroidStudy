@@ -48,7 +48,7 @@ public class Analysis {
     /**
      * 城市弹窗
      */
-    public void showCityWindow(Context context, Activity activity) {
+    public void showCityWindow(Context context, Activity activity,ICityListener cityListener) {
 
         liWindow = new LiWindow(context);
         final View view = LayoutInflater.from(context).inflate(R.layout.window_city_list, null);
@@ -57,7 +57,7 @@ public class Analysis {
         RecyclerView rv = view.findViewById(R.id.rv);
         TextView windowTitle = view.findViewById(R.id.tv_title);
         liWindow.showRightPopupWindow(view);
-        initCityData(rv,windowTitle,cityBack,areaBack,context,activity);
+        initCityData(rv,windowTitle,cityBack,areaBack,context,activity,cityListener);
     }
 
 
@@ -68,7 +68,7 @@ public class Analysis {
      * @param cityBack
      * @param areaBack
      */
-    private void initCityData(RecyclerView recyclerView, TextView windowTitle,ImageView cityBack,ImageView areaBack,Context context,Activity activity) {
+    private void initCityData(RecyclerView recyclerView, TextView windowTitle,ImageView cityBack,ImageView areaBack,Context context,Activity activity,ICityListener cityListener) {
         //初始化省数据 读取省数据并显示到列表中
         CityUtil.getInstance().init(activity);
         List<CityUtil.ProvinceBean> provincelist = CityUtil.getInstance().getAllProvince();
@@ -84,7 +84,7 @@ public class Analysis {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int positionProvince) {
                 windowTitle.setText(provincelist.get(positionProvince).name);
-                showCityList(provinceAdapter, positionProvince,recyclerView,windowTitle,cityBack,areaBack,provincelist,context);
+                showCityList(provinceAdapter, positionProvince,recyclerView,windowTitle,cityBack,areaBack,provincelist,context,cityListener);
             }
         });
     }
@@ -99,7 +99,7 @@ public class Analysis {
      * @param areaBack
      * @param provincelist
      */
-    void showCityList(ProvinceAdapter provinceAdapter, int positionProvince,RecyclerView recyclerView, TextView windowTitle,ImageView cityBack,ImageView areaBack,List<CityUtil.ProvinceBean> provincelist,Context context){
+    void showCityList(ProvinceAdapter provinceAdapter, int positionProvince,RecyclerView recyclerView, TextView windowTitle,ImageView cityBack,ImageView areaBack,List<CityUtil.ProvinceBean> provincelist,Context context,ICityListener cityListener){
         //返回上一级数据
         setBack2Province(provinceAdapter,cityBack,recyclerView,windowTitle);
 
@@ -122,7 +122,7 @@ public class Analysis {
                 windowTitle.setText(provinceTitle);
                 setBack2City(cityAdapter,areaBack,recyclerView,windowTitle,cityTitle);
 
-                onCityClick(cityAdapter,position,positionProvince,recyclerView,provincelist,context);
+                onCityClick(cityAdapter,position,positionProvince,recyclerView,provincelist,context,cityListener);
 
 
             }
@@ -137,7 +137,8 @@ public class Analysis {
      * @param recyclerView
      * @param provincelist
      */
-    void onCityClick(CityAdapter cityAdapter, int cityPostiion, int positionProvince,RecyclerView recyclerView,List<CityUtil.ProvinceBean> provincelist,Context context){
+    void onCityClick(CityAdapter cityAdapter, int cityPostiion, int positionProvince,RecyclerView recyclerView,List<CityUtil.ProvinceBean> provincelist,Context context,ICityListener cityListener){
+
         List<CityUtil.AreaBean> arealist = CityUtil.getInstance().getAreas(cityPostiion,positionProvince);
         Log.w("TAG","arealist======="+arealist);
         AreaAdapter areaAdapter = new AreaAdapter(R.layout.item_city_list, arealist);
@@ -156,7 +157,7 @@ public class Analysis {
 
                 liWindow.closePopupWindow();
 
-                mCityListenr.onSelected(locationName, "101010100");
+                cityListener.onSelected(locationName, "101010100");
 
             }
         });
