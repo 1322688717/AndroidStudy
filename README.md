@@ -6,6 +6,11 @@
 
 ### 依赖
 
+
+
+    viewBinding {
+        enabled = true
+    }
 * butterknife  绑定视图依赖BindView，告别findById，不过你还得安装一个butterknife插件才行
 
   * ```
