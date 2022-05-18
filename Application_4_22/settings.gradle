@@ -1,3 +1,0 @@
-include ':MVPlibrary'
-include ':app'
-rootProject.name = "Application_4_22"
