@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--单选按钮选中时的背景-->
+    <item android:state_pressed="true" android:drawable="@drawable/btn_shap_bule"/>
+    <!--单选按钮未选中的背景-->
+    <item android:state_checked="false" android:drawable="@drawable/btn_shape_gray"/>
+    <!--单选按钮默认的背景-->
+    <item android:drawable="@drawable/btn_shape_gray"/>
+</selector>
