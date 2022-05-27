@@ -4,25 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomDialog">
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_showdialog"
+    <TextView
+        android:id="@+id/tv_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="alterDialog"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toTopOf="@+id/btn_subtraction"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_bottom_dialog"
+        android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="BottomSheetDialog"
+        android:text="添加数据"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_showdialog" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_subtraction" />
+
+    <Button
+        android:id="@+id/btn_subtraction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="减少数据"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
