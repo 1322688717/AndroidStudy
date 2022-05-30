@@ -18,9 +18,11 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-
-    String url= "http://meimeibucket.oss-cn-shanghai.aliyuncs.com/1512565590_86.mp3?OSSAccessKeyId=LTAIhL8GLNt0yDff&Expires=1537590893&Signature=EjC9TM1%2BUkzKScCAYDxEK1Gf3Yg%3D";
+    String url= "https://palmmob3.oss-cn-shenzhen.aliyuncs.com/palmmob3_dev/user_storage/51/1286/1653646318820-1653646324.wav";
     MediaPlayer mediaPlayer;
+    private boolean isRelease = true;   //判断是否MediaPlayer是否释放的标志
+    //private MediaPlayer mPlayer = null;
+    MediaPlayer mp;
 
 
     @Override
@@ -29,32 +31,37 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Uri uri = Uri.parse(url);
-
-
-        try {
-
-            mediaPlayer.setDataSource(MainActivity.this,uri);
-            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mediaPlayer.prepareAsync();
-            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mediaPlayer) {
-                    Log.e("MediaPlayer ","开始播放");
-                    mediaPlayer.start();
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        binding.btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
+            public void onClick(View view) {
+                mp = new MediaPlayer();
+                mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                try {
+                    mp.setDataSource(url);
+                    mp.prepare();
 
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mp.start();
             }
         });
 
+        binding.btnPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mp.pause();
+            }
+        });
+
+        binding.btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mp.stop();
+                mp.release();
+            }
+        });
 
 
     }
