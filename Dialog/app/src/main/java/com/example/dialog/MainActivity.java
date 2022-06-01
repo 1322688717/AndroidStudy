@@ -18,28 +18,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        WindowManager windowManager = getWindowManager();
-        Display display = windowManager.getDefaultDisplay();
-        binding.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                LDialog dialog = LDialog.newInstance( MainActivity.this,R.layout.dialog);
-                dialog
-                        .setWidth(display.getWidth())
-                        .setHeight(display.getHeight())
-
-                        .show();
-            }
-        });
-
-
-        binding.textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                binding.textView.setText("123");
-            }
-        });
+//        WindowManager windowManager = getWindowManager();
+//        Display display = windowManager.getDefaultDisplay();
+//        binding.button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                LDialog dialog = LDialog.newInstance( MainActivity.this,R.layout.dialog);
+//                dialog
+//                        .setWidth(display.getWidth())
+//                        .setHeight(display.getHeight())
+//                        .show();
+//            }
+//        });
+//
+//
+//        binding.textView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                binding.textView.setText("123");
+//            }
+//        });
 
 
 
