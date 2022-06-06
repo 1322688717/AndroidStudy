@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        for ( int i = 1; i< 100 ; i++){0
+                        for ( int i = 1; i< 100 ; i++){
                             try {
                                 Thread.sleep(1000);
                             } catch (InterruptedException e) {
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         binding.btnPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.seekBar.set
+                binding.seekBar.setProgress();
             }
         });
 

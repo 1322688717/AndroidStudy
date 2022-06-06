@@ -19,9 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     String url= "https://palmmob3.oss-cn-shenzhen.aliyuncs.com/palmmob3_dev/user_storage/51/1286/1653646318820-1653646324.wav";
-    MediaPlayer mediaPlayer;
     private boolean isRelease = true;   //判断是否MediaPlayer是否释放的标志
-    //private MediaPlayer mPlayer = null;
     MediaPlayer mp;
 
 
