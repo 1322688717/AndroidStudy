@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(MainActivity.this);
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(MainActivity.this,R.style.BottomSheetDialog);
                 bottomSheetDialog.setContentView(R.layout.dialog_bottom_sheet);
                 bottomSheetDialog.show();
             }

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Administrator/Desktop/AndroidStudy/BottomSheetDialog/app/src/main/res/drawable/shape_sheet_dialog_bg.xml" value="0.273" />
+        <entry key="..\:/Users/Administrator/Desktop/AndroidStudy/BottomSheetDialog/app/src/main/res/layout/activity_bottom_sheet_dialog_fragment.xml" value="0.35054347826086957" />
         <entry key="..\:/Users/Administrator/Desktop/AndroidStudy/BottomSheetDialog/app/src/main/res/layout/activity_main.xml" value="0.36684782608695654" />
         <entry key="..\:/Users/Administrator/Desktop/AndroidStudy/BottomSheetDialog/app/src/main/res/layout/dialog_bottom_sheet.xml" value="0.36684782608695654" />
       </map>
