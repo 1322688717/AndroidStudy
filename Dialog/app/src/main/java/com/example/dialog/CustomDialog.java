@@ -58,20 +58,6 @@ public class CustomDialog extends AppCompatActivity {
         AlertDialog dialog = alterDiaglog.create();
         dialog.show();
 
-//        //放在show()之后，不然有些属性是没有效果的，比如height和width
-//        Window dialogWindow = dialog.getWindow();
-//        WindowManager m = getWindowManager();
-//        Display d = m.getDefaultDisplay(); // 获取屏幕宽、高用
-//        WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
-//        // 设置高度和宽度
-//        p.height = (int) (d.getHeight() * 0.4); // 高度设置为屏幕的0.6
-//        p.width = (int) (d.getWidth() * 0.8); // 宽度设置为屏幕的0.65
-//
-//        //p.gravity = Gravity.CENTER;//设置位置
-//
-//        p.alpha = 0.8f;//设置透明度
-//        dialogWindow.setAttributes(p);
-
 
     }
 }
