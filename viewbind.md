@@ -1,0 +1,6 @@
+viewBinding{
+
+​		enabled = true
+
+}
+
