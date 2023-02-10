@@ -57,17 +57,29 @@ public class MainActivity extends AppCompatActivity {
 
     private void initBroadReceiver() {
         blueToothBroadcastReceiver = new BlueToothBroadcastReceiver();
-        //监听蓝牙是否打开
-        IntentFilter intentFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-        //开始扫描
-        intentFilter.addAction(BluetoothAdapter.ACTION_DISCOVERY_STARTED);
-        //结束扫描
-        intentFilter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
-        //找到的设备
-        intentFilter.addAction(BluetoothDevice.ACTION_FOUND);
-        //状态改变
-        intentFilter.addAction(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-        registerReceiver(blueToothBroadcastReceiver,intentFilter);
+        IntentFilter deviceIntentFilter = new IntentFilter();
+
+        deviceIntentFilter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
+
+        deviceIntentFilter.addAction(BluetoothAdapter.ACTION_DISCOVERY_STARTED);
+
+        deviceIntentFilter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
+
+        deviceIntentFilter.addAction(BluetoothDevice.ACTION_FOUND);
+
+        deviceIntentFilter.addAction(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED);
+
+        deviceIntentFilter.addAction(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
+
+        deviceIntentFilter.addAction(BluetoothDevice.ACTION_ACL_CONNECTED);
+
+        deviceIntentFilter.addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED);
+
+        registerReceiver(blueToothBroadcastReceiver, deviceIntentFilter);
+
+        IntentFilter stateIntentFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+
+        registerReceiver(blueToothBroadcastReceiver, stateIntentFilter);
     }
 
     private void initData() {
@@ -90,14 +102,16 @@ public class MainActivity extends AppCompatActivity {
                                             enableBtIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                             startActivity(enableBtIntent);
                                         }else {
-                                            Toast.makeText(MainActivity.this, "未获取蓝牙权限", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(MainActivity.this, "未获取权限", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
                     }else {
                         Toast.makeText(MainActivity.this, "正在搜索设备", Toast.LENGTH_SHORT).show();
-
-
+                        if (bluetoothAdapter.isDiscovering()) {
+                            bluetoothAdapter.cancelDiscovery();
+                        }
+                        bluetoothAdapter.startDiscovery();
                     }
                 }
             }
