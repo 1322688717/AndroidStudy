@@ -24,15 +24,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
      Button mButtonUri;
-
      Button mButtonPhone;
-
      Button mButtonInformation;
-
      Button mButtonCallPhone;
-
      Button mButtonSendInformation;
-
      static final String[] PERMISSION = new String[]{
             Manifest.permission.CALL_PHONE,
     };
