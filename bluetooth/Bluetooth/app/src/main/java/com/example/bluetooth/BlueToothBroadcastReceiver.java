@@ -20,43 +20,49 @@ public class BlueToothBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Log.i("TAG", "intent.getAction()==" + intent.getAction());
+        switch (intent.getAction()){
+            case BluetoothAdapter.ACTION_STATE_CHANGED:
+                isOpenBlueTooth(intent);
+                break;
+            case BluetoothAdapter.ACTION_DISCOVERY_STARTED:
+                Log.i("TAG", "开始搜索附近蓝牙设备...");
+                break;
+            case BluetoothAdapter.ACTION_DISCOVERY_FINISHED:
+                Log.i("TAG", "搜索附近蓝牙完成");
+                break;
+            case BluetoothDevice.ACTION_FOUND:
+                    //获取蓝牙设备
+                    BluetoothDevice scanDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                    if(scanDevice == null || scanDevice.getName() == null) {
+                        return;
+                    }
+                    Log.d("TAG", "搜索到了: name="+scanDevice.getName()+"  address="+scanDevice.getAddress());
+            default:
+                break;
+        }
+    }
 
-        if (intent.getAction().equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
-            int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, 0);
-            switch (state) {
-                case 10:
-                    Log.i("TAG", "蓝牙已关闭");
-                    break;
-                case 11:
-                    Log.i("TAG", "蓝牙正在打开");
-                    break;
-                case 12:
-                    Log.i("TAG", "蓝牙已打开");
-                    break;
-                case 13:
-                    Log.i("TAG", "蓝牙正在关闭");
-                    break;
-                default:
-                    Log.i("TAG", "state状态为：" + state);
-            }
-        } else if (intent.getAction().equals(BluetoothDevice.ACTION_FOUND)) {
-            String name = intent.getStringExtra(BluetoothDevice.EXTRA_NAME);
-
-            if (name != null) {
-                int rssi = intent.getExtras().getShort(BluetoothDevice.EXTRA_RSSI);
-
-                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-
-//                MyBlueToothDevice myDevice = new MyBlueToothDevice(device, name, rssi);
-//
-//                myBlueToothDevices.add(myDevice);
-                Log.e("=====", "搜索到设备: " + device);
-            }
-        } else if (intent.getAction().equals(BluetoothAdapter.ACTION_DISCOVERY_STARTED)) {
-            Log.i("TAG", "开始搜索附近蓝牙设备...");
-        } else if (intent.getAction().equals(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)) {
-            Log.i("TAG", "搜索附近蓝牙完成");
+    /**
+     * 监听蓝牙打开关闭的状态
+     * @param intent
+     */
+    private void isOpenBlueTooth(Intent intent) {
+        int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, 0);
+        switch (state) {
+            case 10:
+                Log.i("TAG", "蓝牙已关闭");
+                break;
+            case 11:
+                Log.i("TAG", "蓝牙正在打开");
+                break;
+            case 12:
+                Log.i("TAG", "蓝牙已打开");
+                break;
+            case 13:
+                Log.i("TAG", "蓝牙正在关闭");
+                break;
+            default:
+                Log.i("TAG", "state状态为：" + state);
         }
     }
 }

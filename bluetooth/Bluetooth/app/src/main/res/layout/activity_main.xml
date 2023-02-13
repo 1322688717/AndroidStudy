@@ -8,21 +8,11 @@
     tools:context=".MainActivity">
 
 
-    <Button
-        android:id="@+id/btn_open_blueTooth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="打开蓝牙" />
-
-    <Button
-        android:id="@+id/btn_close_blueTooth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="关闭蓝牙" />
 
     <Button
         android:id="@+id/btn_search_blueTooth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="搜索附近蓝牙设备" />
+
 </LinearLayout>
