@@ -66,6 +66,16 @@
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
 ```
 
+* mmkv储存库
+
+  ```
+  https://github.com/Tencent/MMKV
+  ```
+
+  
+
+
+
 ## 注：
 
 * lombok插件

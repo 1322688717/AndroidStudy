@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/white" />
+    <item>
+        <bitmap
+            android:gravity="top|fill_horizontal"
+            android:src="@drawable/launcher_bg_top" />
+    </item>
+
+
+
+    <item
+        android:width="251dp"
+        android:height="13dp"
+        android:bottom="128dp"
+        android:drawable="@drawable/ic_splash_loading_bg"
+        android:gravity="bottom|center_horizontal" />
+    <item
+        android:width="160dp"
+        android:height="56dp"
+        android:bottom="20dp"
+        android:drawable="@drawable/launcher_bg_bottom"
+        android:gravity="bottom|center_horizontal" />
+</layer-list>
