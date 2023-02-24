@@ -9,7 +9,7 @@
 
     <style name="MyDialog" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- 背景颜色及透明程度 -->
-<!--        <item name="android:windowBackground">#D6D6D6</item>-->
+        <item name="android:windowBackground">#50000000</item>
         <!-- 是否半透明 -->
         <item name="android:windowIsTranslucent">false</item>
         <!-- 是否没有标题 -->

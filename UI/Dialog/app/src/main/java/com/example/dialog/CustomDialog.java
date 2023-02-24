@@ -30,7 +30,6 @@ public class CustomDialog extends AppCompatActivity {
             }
         });
 
-//        BottomSheetDialog
 
         binding.btnBottomDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +37,30 @@ public class CustomDialog extends AppCompatActivity {
                 bottomDialog();
             }
         });
+
+        binding.btnDialogCustom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog3();
+            }
+        });
+    }
+
+    private void dialog3() {
+        AlertDialog.Builder alterDiaglog = new AlertDialog.Builder(CustomDialog.this,R.style.MyDialog);
+        alterDiaglog.setView(R.layout.dialog_3);
+        AlertDialog dialog = alterDiaglog.create();
+        dialog.show();
+        Window dialogWindow = dialog.getWindow();
+        WindowManager m = getWindowManager();
+        Display d = m.getDefaultDisplay();
+        WindowManager.LayoutParams p = dialogWindow.getAttributes();
+        // 设置高度和宽度
+        p.height = (int) (d.getHeight());
+         p.width = (int) (d.getWidth());
+        p.gravity = Gravity.TOP;
+//         p.alpha = 0.8f;
+        dialogWindow.setAttributes(p);
     }
 
     /**
@@ -54,7 +77,7 @@ public class CustomDialog extends AppCompatActivity {
      */
     private void DiyDialog2() {
         AlertDialog.Builder alterDiaglog = new AlertDialog.Builder(CustomDialog.this);
-        alterDiaglog.setView(R.layout.dialog_1);//加载进去
+        alterDiaglog.setView(R.layout.dialog_1);
         AlertDialog dialog = alterDiaglog.create();
         dialog.show();
 
