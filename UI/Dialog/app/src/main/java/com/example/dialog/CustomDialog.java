@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dialog.databinding.ActivityCustomDialogBinding;
@@ -61,6 +62,14 @@ public class CustomDialog extends AppCompatActivity {
         p.gravity = Gravity.TOP;
 //         p.alpha = 0.8f;
         dialogWindow.setAttributes(p);
+        ImageView mImageViewDelete;
+        mImageViewDelete = dialogWindow.findViewById(R.id.img_delet);
+        mImageViewDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
     }
 
     /**
