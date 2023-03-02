@@ -6,11 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.blankj.utilcode.util.BarUtils
 import com.example.kotlin.databinding.ActivityHomeBinding
-import com.example.kotlin.ui.home.HomeViewModel
 import com.example.kotlin.viewmodel.HomeActivityViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

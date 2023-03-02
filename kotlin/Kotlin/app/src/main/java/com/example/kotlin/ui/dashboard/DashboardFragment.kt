@@ -4,39 +4,40 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.kotlin.adapter.AdapterLike
 import com.example.kotlin.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
-
-    private var _binding: FragmentDashboardBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private val url: String =
+        "https://service.picasso.adesk.com/v1/vertical/vertical?limit=30&skip=180&adult=false&first=0&order=hot"
+    private lateinit var viewModel: WallPaperViewModel
+    private var binding: FragmentDashboardBinding? = null
+    private var adapter: AdapterLike? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
-
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+        savedInstanceState: Bundle?,
+    ): View? {
+        binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this).get(WallPaperViewModel::class.java)
+        initView()
+        return binding!!.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun initView() {
+        viewModel.setLikeBean(url, requireActivity())
+        binding!!.rcWallpaper.layoutManager = GridLayoutManager(activity, 2)
+        viewModel.likeBean.observe(
+            viewLifecycleOwner,
+            Observer {
+                adapter = AdapterLike(it.res.vertical, requireActivity())
+                binding!!.rcWallpaper.adapter = adapter
+            },
+        )
     }
 }

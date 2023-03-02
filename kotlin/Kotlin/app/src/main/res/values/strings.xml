@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Kotlin</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">工具</string>
+    <string name="title_dashboard">壁纸</string>
+    <string name="title_notifications">我的</string>
 </resources>
