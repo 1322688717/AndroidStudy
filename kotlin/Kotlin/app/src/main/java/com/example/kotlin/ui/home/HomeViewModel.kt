@@ -1,13 +1,27 @@
 package com.example.kotlin.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.kotlin.api.RequestResponse
+import com.example.kotlin.bean.SaoBean
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    var erathy = MutableLiveData<String>()
+    var sao = MutableLiveData<String>()
+
+    fun setSao() {
+        RequestResponse.vvhService.getSao("json").enqueue(object : Callback<SaoBean> {
+            override fun onResponse(call: Call<SaoBean>, response: Response<SaoBean>) {
+                sao.value = response.body()?.ishan
+            }
+
+            override fun onFailure(call: Call<SaoBean>, t: Throwable) {
+                erathy.value = "网络请求错误"
+            }
+        })
     }
-    val text: LiveData<String> = _text
 }

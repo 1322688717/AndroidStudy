@@ -11,6 +11,7 @@ import com.blankj.utilcode.util.BarUtils
 import com.example.kotlin.databinding.ActivityHomeBinding
 import com.example.kotlin.viewmodel.HomeActivityViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.gyf.immersionbar.ImmersionBar
 
 class HomeActivity : AppCompatActivity() {
 
@@ -26,8 +27,9 @@ class HomeActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_home)
         navView.setupWithNavController(navController)
-        BarUtils.setStatusBarColor(this, getColor(R.color.white))
-        BarUtils.setStatusBarLightMode(this, true)
+        ImmersionBar.with(this)
+            .statusBarDarkFont(true)
+            .init()
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {

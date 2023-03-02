@@ -13,7 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.kotlin.R
 import com.example.kotlin.bean.Vertical
-import com.example.kotlin.ui.home.WallPaperActivity
+import com.example.kotlin.ui.dashboard.WallPaperActivity
 
 class AdapterLike(private var vertical: List<Vertical>, private var activity: FragmentActivity) :
     RecyclerView.Adapter<AdapterLike.MyViewHolder>() {

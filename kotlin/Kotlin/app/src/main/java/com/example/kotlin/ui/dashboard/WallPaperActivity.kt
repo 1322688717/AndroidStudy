@@ -1,4 +1,4 @@
-package com.example.kotlin.ui.home
+package com.example.kotlin.ui.dashboard
 
 import android.content.Intent
 import android.graphics.Bitmap

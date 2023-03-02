@@ -69,4 +69,8 @@ dependencies {
 
 
     implementation "androidx.recyclerview:recyclerview:1.1.0"
+
+    //沉浸式状态栏
+    implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
+    implementation 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2'
 }
