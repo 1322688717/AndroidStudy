@@ -64,12 +64,12 @@
                         android:id="@+id/tv_sentence_content"
                         android:layout_width="310dp"
                         android:layout_height="144dp"
-                        android:layout_marginTop="14dp"
-                        android:textColor="#333333"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bjdzb_home_bg_d9d9d9"
                         android:gravity="center"
                         android:paddingStart="19dp"
                         android:paddingEnd="18dp"
-                        android:background="@drawable/bjdzb_home_bg_d9d9d9"
+                        android:textColor="#333333"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -175,8 +175,6 @@
                         android:textSize="18dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/btn_cop" />
-
-
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

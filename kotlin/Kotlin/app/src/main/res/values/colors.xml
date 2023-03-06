@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red_802916"> #802916</color>
     <color name="home_status_bar"> #ff3573ef</color>
+    <color name="color_50000000">#50000000</color>
 
 
 </resources>

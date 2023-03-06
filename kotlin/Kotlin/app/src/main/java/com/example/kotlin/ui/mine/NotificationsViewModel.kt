@@ -1,4 +1,4 @@
-package com.example.kotlin.ui.notifications
+package com.example.kotlin.ui.mine
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

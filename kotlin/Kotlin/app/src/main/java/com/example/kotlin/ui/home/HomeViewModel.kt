@@ -2,6 +2,7 @@ package com.example.kotlin.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.blankj.utilcode.util.LogUtils
 import com.example.kotlin.api.RequestResponse
 import com.example.kotlin.bean.SaoBean
 import retrofit2.Call
@@ -20,7 +21,7 @@ class HomeViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<SaoBean>, t: Throwable) {
-                erathy.value = "网络请求错误"
+                LogUtils.e(t.message)
             }
         })
     }

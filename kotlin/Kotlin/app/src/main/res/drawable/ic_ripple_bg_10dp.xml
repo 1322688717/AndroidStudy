@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/card_gray_bg_10dp" android:state_pressed="true"></item>
+    <!-- 未单击时的背景颜色 -->
+    <item android:drawable="@drawable/card_white_bg_10dp" android:state_pressed="false"></item>
+</selector>
