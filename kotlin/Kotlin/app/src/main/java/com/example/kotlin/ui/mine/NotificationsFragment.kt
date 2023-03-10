@@ -16,7 +16,7 @@ class NotificationsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         val notificationsViewModel = ViewModelProvider(this)[NotificationsViewModel::class.java]
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)

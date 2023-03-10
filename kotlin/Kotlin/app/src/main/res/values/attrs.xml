@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SettingItemView">
+        <attr name="title" format="string" />
+        <attr name="titleColor" format="color" />
+        <attr name="subTitle" format="string" />
+        <attr name="subTitleColor" format="color" />
+        <attr name="icon" format="reference" />
+        <attr name="subIcon" format="reference" />
+        <attr name="tipIcon" format="reference" />
+        <attr name="rippleBg" format="reference" />
+        <attr name="showBottomLine" format="boolean" />
+    </declare-styleable>
+</resources>

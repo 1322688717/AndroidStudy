@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.kotlin.databinding.ActivityWallPaperBinding
+import com.gyf.immersionbar.ImmersionBar
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
@@ -29,7 +30,9 @@ class WallPaperActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWallPaperBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
-//        StatusBarUtil.initStatusBar(this)
+        ImmersionBar.with(this)
+            .statusBarDarkFont(true)
+            .init()
         img = intent.getStringExtra("img")
         Glide.with(this)
             .load(img)
