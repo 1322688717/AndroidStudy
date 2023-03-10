@@ -8,6 +8,7 @@
    >
 
     <com.example.kotlin.view.SetItemView
+        android:id="@+id/item_more"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_64"
         app:title ="更多功能"
@@ -16,6 +17,7 @@
         app:showBottomLine="true"
         app:titleColor="@color/black"/>
     <com.example.kotlin.view.SetItemView
+        android:id="@+id/item_suggestion"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_64"
         app:title ="意见反馈"
@@ -24,6 +26,7 @@
         app:rippleBg="@drawable/ic_ripple_bg_10dp"
         app:titleColor="@color/black"/>
     <com.example.kotlin.view.SetItemView
+        android:id="@+id/item_user_protocol"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_64"
         app:title ="用户协议"
@@ -32,6 +35,7 @@
         app:rippleBg="@drawable/ic_ripple_bg_10dp"
         app:titleColor="@color/black"/>
     <com.example.kotlin.view.SetItemView
+        android:id="@+id/item_privacy_policy"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_64"
         app:icon="@drawable/privacy"
@@ -40,6 +44,7 @@
         app:rippleBg="@drawable/ic_ripple_bg_10dp"
         app:titleColor="@color/black"/>
     <com.example.kotlin.view.SetItemView
+        android:id="@+id/item_about_us"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_64"
         app:icon="@drawable/ic_feedback"
