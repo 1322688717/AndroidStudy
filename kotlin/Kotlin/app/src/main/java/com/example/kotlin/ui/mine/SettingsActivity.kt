@@ -1,4 +1,4 @@
-package com.example.kotlin.activity
+package com.example.kotlin.ui.mine
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

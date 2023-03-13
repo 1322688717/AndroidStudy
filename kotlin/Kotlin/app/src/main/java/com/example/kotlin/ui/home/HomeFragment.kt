@@ -4,11 +4,11 @@ import android.app.ProgressDialog
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,13 +18,13 @@ import com.example.kotlin.R
 import com.example.kotlin.databinding.FragmentHomeBinding
 import java.util.Random
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     private var homeViewModel: HomeViewModel? = null
 
-    private var progressDialog : ProgressDialog? = null
+    private var progressDialog: ProgressDialog? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,21 +33,18 @@ class HomeFragment : Fragment() {
         homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        initView()
+        initData()
+        intiView()
         return root
     }
 
-    private fun initView() {
-        _binding?.btnNext?.setOnClickListener {
-            showHighFingerCount()
-            resetStar()
-            showStar()
-            getSaoText()
-            setProgressbar()
-        }
-        _binding?.btnCop?.setOnClickListener {
-            copyStr(_binding?.tvSentenceContent?.text.toString())
-        }
+    private fun intiView() {
+        _binding?.btnNews?.setOnClickListener(this)
+        _binding?.btnCop?.setOnClickListener(this)
+        _binding?.btnNext?.setOnClickListener(this)
+    }
+
+    private fun initData() {
         getSaoText()
     }
 
@@ -71,13 +68,14 @@ class HomeFragment : Fragment() {
 
     private fun copyStr(str: String) {
         try {
-            //获取剪贴版
-            val clipboard = activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            //创建ClipData对象
-            //第一个参数只是一个标记，随便传入。
-            //第二个参数是要复制到剪贴版的内容
+            // 获取剪贴版
+            val clipboard =
+                activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            // 创建ClipData对象
+            // 第一个参数只是一个标记，随便传入。
+            // 第二个参数是要复制到剪贴版的内容
             val clip = ClipData.newPlainText("simple text", str)
-            //传入clipData对象.
+            // 传入clipData对象.
             clipboard.setPrimaryClip(clip)
             ToastUtils.showShort("复制成功")
         } catch (e: Exception) {
@@ -126,5 +124,26 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            _binding?.btnNews?.id -> {
+                val intent = Intent(activity, CommonImageActivity::class.java)
+                startActivity(intent)
+            }
+
+            _binding?.btnNext?.id -> {
+                showHighFingerCount()
+                resetStar()
+                showStar()
+                getSaoText()
+                setProgressbar()
+            }
+
+            _binding?.btnCop?.id -> {
+                copyStr(_binding?.tvSentenceContent?.text.toString())
+            }
+        }
     }
 }

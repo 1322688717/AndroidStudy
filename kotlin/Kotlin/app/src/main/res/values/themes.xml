@@ -17,4 +17,13 @@
     <style name="Theme.progressDialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
 
     </style>
+
+    <style name="CleanSplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@drawable/clean_splash_bg</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+<!--        <item name="android:windowAnimationStyle">@style/noAnimation</item> &lt;!&ndash; 进入和退出动画 &ndash;&gt;-->
+    </style>
 </resources>
