@@ -10,7 +10,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"
-        android:background="@drawable/read_world_for_60s"/>
+        android:scaleType="centerInside"
+       android:src="@drawable/read_world_for_60s"/>
 
 </androidx.core.widget.NestedScrollView>

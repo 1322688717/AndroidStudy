@@ -33,6 +33,10 @@
         <activity
             android:name=".NewSplashActivity"
             android:exported="true"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|uiMode"
+            android:finishOnCloseSystemDialogs="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/CleanSplashTheme"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
