@@ -42,6 +42,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         _binding?.btnNews?.setOnClickListener(this)
         _binding?.btnCop?.setOnClickListener(this)
         _binding?.btnNext?.setOnClickListener(this)
+        _binding?.btnWeather?.setOnClickListener(this)
     }
 
     private fun initData() {
@@ -143,6 +144,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
             _binding?.btnCop?.id -> {
                 copyStr(_binding?.tvSentenceContent?.text.toString())
+            }
+
+            _binding?.btnWeather?.id -> {
+                val intent = Intent(activity, WeatherActivity::class.java)
+                startActivity(intent)
             }
         }
     }

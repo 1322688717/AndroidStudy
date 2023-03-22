@@ -15,10 +15,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.home.WeatherActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.mine.SettingsActivity"
             android:exported="false"
-            android:label="@string/title_activity_settings"
-        />
+            android:label="@string/title_activity_settings" />
         <activity
             android:name=".ui.dashboard.WallPaperActivity"
             android:exported="false" />
@@ -32,12 +34,11 @@
             android:label="@string/title_activity_home" />
         <activity
             android:name=".NewSplashActivity"
-            android:exported="true"
             android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|uiMode"
+            android:exported="true"
             android:finishOnCloseSystemDialogs="true"
             android:screenOrientation="portrait"
-            android:theme="@style/CleanSplashTheme"
-            >
+            android:theme="@style/CleanSplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
