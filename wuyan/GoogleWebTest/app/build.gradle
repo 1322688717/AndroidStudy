@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdk 30
+    buildToolsVersion '30.0.2'
     defaultConfig {
         applicationId "com.java8888.java9999"
         minSdkVersion 21
@@ -52,7 +52,7 @@ dependencies {
     // Json 解析框架
     implementation 'com.google.code.gson:gson:2.8.5'
     // 权限请求框架
-    implementation 'com.github.getActivity:XXPermissions:13.5'
+    implementation 'com.github.getActivity:XXPermissions:16.8'
     //核心必须依赖
     implementation 'com.scwang.smart:refresh-layout-kernel:2.0.1'
     implementation 'com.scwang.smart:refresh-header-classics:2.0.1'
