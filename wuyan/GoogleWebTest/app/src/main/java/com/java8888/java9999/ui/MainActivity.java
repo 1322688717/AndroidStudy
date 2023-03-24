@@ -131,7 +131,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
             mWebView.setVisibility(View.GONE);
         }
         Boolean showPrivacy = Boolean.valueOf(getResources().getString(R.string.showPrivacy));
-        if (isFirst &&showPrivacy) {
+        if (isFirst && showPrivacy) {
             mTvSkip.setVisibility(View.GONE);
             new PrivacyProtocolDialog(this, R.style.protocolDialogStyle, this).show();
         } else {
@@ -143,7 +143,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
         mProgress.show(); // 显示
         mProgress.setWebProgress(50);              // 设置进度
         mProgress.setColor("#D81B60");             // 设置颜色
-        mProgress.setColor("#00D81B60","#D81B60"); // 设置渐变色
+        mProgress.setColor("#00D81B60", "#D81B60"); // 设置渐变色
         mProgress.hide(); // 隐藏
     }
 
@@ -173,7 +173,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
             // 设置是否开启数据库存储API权限，默认false，未开启，可以参考setDatabasePath(String path)
             settings.setDatabaseEnabled(true);
             // 设置是否开启DOM存储API权限，默认false，未开启，设置为true，WebView能够使用DOM
-             settings.setDomStorageEnabled(true);
+            settings.setDomStorageEnabled(true);
             // 设置WebView是否使用viewport，当该属性被设置为false时，加载页面的宽度总是适应WebView控件宽度；
             // 当被设置为true，当前页面包含viewport属性标签，在标签中指定宽度值生效，如果页面不包含viewport标签，无法提供一个宽度值，这个时候该方法将被使用。
             settings.setUseWideViewPort(true);
@@ -251,7 +251,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
         @Override
         public void onHideCustomView() {
             //退出全屏
-            if (customView == null){
+            if (customView == null) {
                 return;
             }
             //移除全屏视图并隐藏
@@ -374,13 +374,13 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
                     if (urlBean != null) {
                         if (!TextUtils.isEmpty(urlBean.getFloatUrl())) {
                             //skipLocalBrowser(urlBean.getFloatUrl());
-                            if (bValue){
+                            if (bValue) {
                                 kv.encode("bool", false);
                                 bValue = kv.decodeBool("bool");
                                 //skipLocalBrowser(mFloatUrl);
                                 loadUrl(urlBean.getFloatUrl());
                                 floatingButton.setBackgroundResource(R.mipmap.back);
-                            }else {
+                            } else {
                                 kv.encode("bool", true);
                                 bValue = kv.decodeBool("bool");
                                 initData();
