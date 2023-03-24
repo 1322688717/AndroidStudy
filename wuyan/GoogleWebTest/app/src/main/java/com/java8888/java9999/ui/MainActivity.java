@@ -28,6 +28,7 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -53,6 +54,7 @@ import com.tencent.mmkv.MMKV;
 
 import java.io.IOException;
 
+import kotlin.ranges.ClosedFloatingPointRange;
 import me.jingbin.progress.WebProgress;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -87,6 +89,8 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
     private ValueCallback<Uri> uploadFile;
     private ValueCallback<Uri[]> uploadFiles;
     private boolean bValue = true;
+
+    private TextView tvErrorJson;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -356,6 +360,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
         mTvSkip = findViewById(R.id.tv_skip);
         mWebView = findViewById(R.id.web_view);
         mProgress = findViewById(R.id.progressbar_view);
+        tvErrorJson = findViewById(R.id.tv_error_json);
     }
 
     /**
@@ -416,7 +421,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                        skipError();
+                        skipError(urlBean.getIpUrl());
                     }
 
                     @Override
@@ -436,7 +441,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
                                 }
                             });
                         } catch (Exception e) {
-                            skipError();
+                            skipError(urlBean.getIpUrl());
                         }
                     }
                 });
@@ -635,7 +640,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
     /**
      * 跳转错误页
      */
-    public void skipError() {
+    public void skipError(String error) {
         if (null == mLayoutError || null == mBtnReload) {
             return;
         }
@@ -643,6 +648,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
             @Override
             public void run() {
                 mLayoutError.setVisibility(View.VISIBLE);
+                tvErrorJson.setText(error);
                 mBtnReload.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
