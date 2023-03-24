@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.yxml8888.yxml9999",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 101,
+      "versionName": "1.0.1",
+      "outputFile": "app-release.apk"
+    }
+  ]
+}

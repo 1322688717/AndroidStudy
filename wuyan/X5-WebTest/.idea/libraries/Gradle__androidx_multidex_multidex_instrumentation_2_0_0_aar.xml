@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.multidex:multidex-instrumentation:2.0.0@aar">
+    <CLASSES>
+      <root url="file://D:/develop/developer/gradle/caches/transforms-3/0652d27952922a0a85d73ca052545b85/transformed/multidex-instrumentation-2.0.0/res" />
+      <root url="file://D:/develop/developer/gradle/caches/transforms-2/files-2.1/11ed047ac091c0fd0f5fd91190344348/res" />
+      <root url="file://D:/developtools/gradle/caches/transforms-2/files-2.1/15d775948ab669e9be37a48a9456241c/res" />
+      <root url="file://D:/developtools/gradle/caches/transforms-2/files-2.1/cf677270098f9b351b144593a1c062a5/multidex-instrumentation-2.0.0/res" />
+      <root url="file://D:/developtools/gradle/caches/transforms-2/files-2.1/cf677270098f9b351b144593a1c062a5/multidex-instrumentation-2.0.0/AndroidManifest.xml" />
+      <root url="jar://D:/developtools/gradle/caches/transforms-2/files-2.1/cf677270098f9b351b144593a1c062a5/multidex-instrumentation-2.0.0/jars/classes.jar!/" />
+      <root url="file://D:/develop/developer/gradle/caches/transforms-2/files-2.1/cf677270098f9b351b144593a1c062a5/multidex-instrumentation-2.0.0/res" />
+      <root url="file://D:/develop/developer/gradle/caches/transforms-2/files-2.1/cf677270098f9b351b144593a1c062a5/multidex-instrumentation-2.0.0/AndroidManifest.xml" />
+      <root url="jar://D:/develop/developer/gradle/caches/transforms-2/files-2.1/cf677270098f9b351b144593a1c062a5/multidex-instrumentation-2.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cf677270098f9b351b144593a1c062a5/multidex-instrumentation-2.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cf677270098f9b351b144593a1c062a5/multidex-instrumentation-2.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cf677270098f9b351b144593a1c062a5/multidex-instrumentation-2.0.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

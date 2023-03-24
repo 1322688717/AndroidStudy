@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+
+    tools:context=".ui.MainActivity">
+    <me.jingbin.progress.WebProgress
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/progressbar_view"
+        android:visibility="gone"
+        />
+
+
+    <RelativeLayout
+        android:id="@+id/layout_main"
+        android:background="@color/default_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/layout_privacy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <com.yxml8888.yxml9999.view.CircleImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="90dp"
+                android:src="@mipmap/icon" />
+
+            <ProgressBar
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="70dp"
+                android:indeterminateDrawable="@drawable/progressbar" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/full_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:id="@+id/layout_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_internet_error" />
+                <Button
+                    android:id="@+id/btn_reload"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:text="加载失败，点击重试"
+                    android:layout_centerInParent="true"
+                    android:textSize="18sp"
+                    android:paddingLeft="18dp"
+                    android:paddingRight="18dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.yxml8888.yxml9999.view.DragFloatActionButton
+            android:id="@+id/floatingButton"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="100dp"
+            android:background="@mipmap/icon_float"
+            android:clickable="true"
+            android:visibility="gone" />
+
+        <com.yxml8888.yxml9999.view.NTSkipView
+            android:id="@+id/tv_skip"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/nt_bg_skipview"
+            android:gravity="center"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</LinearLayout>

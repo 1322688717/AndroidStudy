@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#FA7199</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transfer">#00000000</color>
+    <color name="default_bg">#F0F2F4</color>
+
+    <color name="nt_color_FFFFFF">#FFFFFF</color>
+    <color name="nt_color_000000">#000000</color>
+    <color name="nt_color_0082DF">#0082DF</color>
+    <color name="nt_color_42B9EC">#42B9EC</color>
+
+    <color name="global">#3A383C</color>
+    <color name="global_press">#3A383C</color>
+    <color name="textColor">#323232</color>
+</resources>

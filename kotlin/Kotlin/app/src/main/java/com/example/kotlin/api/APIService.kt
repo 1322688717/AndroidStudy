@@ -2,6 +2,7 @@ package com.example.kotlin.api
 
 import com.example.kotlin.bean.Bean60s
 import com.example.kotlin.bean.SaoBean
+import com.example.kotlin.bean.WeatherBean
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -9,8 +10,12 @@ import retrofit2.http.Query
 interface APIService {
     @GET("/api/sao")
     fun getSao(@Query("type") type: String): Call<SaoBean>
+
     @GET("/api/60s")
     fun get60s(@Query("type") type: String): Call<Bean60s>
+
+    @GET("/api/weather")
+    fun getWeather(@Query("type") type: String): Call<WeatherBean>
 //
 //    @GET("/api/rand.qinghua")
 //    fun getErathy(@Query("format") format : String) : Call<ErathyBean>

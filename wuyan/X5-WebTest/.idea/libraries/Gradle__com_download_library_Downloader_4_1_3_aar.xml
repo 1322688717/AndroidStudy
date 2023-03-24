@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.download.library:Downloader:4.1.3@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0ec67ec6b521cbb1609de30aa53b8fce/jetified-Downloader-4.1.3/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0ec67ec6b521cbb1609de30aa53b8fce/jetified-Downloader-4.1.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0ec67ec6b521cbb1609de30aa53b8fce/jetified-Downloader-4.1.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0ec67ec6b521cbb1609de30aa53b8fce/jetified-Downloader-4.1.3/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.download.library/Downloader/4.1.3/fcd0e8f3c53c490c1c22d586c9fb141509ef9034/Downloader-4.1.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.download.library/Downloader/4.1.3/e8897d003c7ddc4185ffbae32d36904651294827/Downloader-4.1.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

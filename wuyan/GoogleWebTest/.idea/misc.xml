@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/2021/1005/WebTest/app/src/main/res/drawable/bg_privacy_protocol.xml" value="0.33055555555555555" />
+        <entry key="..\:/2021/1005/WebTest/app/src/main/res/drawable/nt_ad_shape_progressbar_mini.xml" value="0.3287037037037037" />
+        <entry key="..\:/2021/1005/WebTest/app/src/main/res/drawable/progress.xml" value="0.33796296296296297" />
+        <entry key="..\:/2021/1005/WebTest/app/src/main/res/layout/activity_custom_web.xml" value="0.28940217391304346" />
+        <entry key="..\:/2021/1005/WebTest/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
+        <entry key="..\:/2021/1005/WebTest/app/src/main/res/layout/activity_privacy.xml" value="0.14447463768115942" />
+        <entry key="..\:/2021/1005/WebTest/app/src/main/res/layout/privacy_protocol.xml" value="0.28940217391304346" />
+        <entry key="..\:/2021/1005/WebTest/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/zcq/Desktop/MoneyProject/wuyan/GoogleWebTest/app/src/main/res/layout/activity_custom_web.xml" value="0.18795289855072464" />
+        <entry key="..\:/Users/zcq/Desktop/MoneyProject/wuyan/GoogleWebTest/app/src/main/res/layout/activity_main.xml" value="0.23958333333333334" />
+        <entry key="..\:/Z_2022/QQ_web/code/code/GoogleWebTest/GoogleWebTest/app/src/main/res/drawable/nt_ad_shape_progressbar_mini.xml" value="0.365625" />
+        <entry key="..\:/Z_2022/QQ_web/code/code/GoogleWebTest/GoogleWebTest/app/src/main/res/drawable/nt_bg_skipview.xml" value="0.365625" />
+        <entry key="..\:/Z_2022/QQ_web/code/code/GoogleWebTest/GoogleWebTest/app/src/main/res/layout/activity_main.xml" value="0.3494791666666667" />
+        <entry key="..\:/caoZ/1131/WebTest/app/src/main/res/layout/activity_main.xml" value="0.3494791666666667" />
+        <entry key="..\:/caoZ/1131/WebTest/app/src/main/res/layout/activity_web_error.xml" value="0.3494791666666667" />
+        <entry key="..\:/caocaocao/20211008/WebTest/app/src/main/res/drawable/bg_btn.xml" value="0.3472222222222222" />
+        <entry key="..\:/caocaocao/20211008/WebTest/app/src/main/res/drawable/btn_normal.xml" value="0.3472222222222222" />
+        <entry key="..\:/caocaocao/20211008/WebTest/app/src/main/res/drawable/btn_press.xml" value="0.3472222222222222" />
+        <entry key="..\:/caocaocao/20211008/WebTest/app/src/main/res/layout/activity_custom_web.xml" value="0.1490036231884058" />
+        <entry key="..\:/caocaocao/20211008/WebTest/app/src/main/res/layout/activity_main.xml" value="0.16995947315096252" />
+        <entry key="..\:/caocaocao/20211008/WebTest/app/src/main/res/layout/activity_web_error.xml" value="0.3494791666666667" />
+        <entry key="..\:/caocaocao/20211008/WebTest/app/src/main/res/layout/layout_rela_view.xml" value="0.3494791666666667" />
+        <entry key="..\:/caocaocao/20211008/WebTest/app/src/main/res/layout/privacy_protocol.xml" value="0.16995947315096252" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

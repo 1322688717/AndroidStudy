@@ -1,0 +1,5 @@
+rootProject.name = "java9999"
+include ':app'
+include ':agentweb-core'
+include ':agentweb-filechooser'
+include ':jsbridge_x5'

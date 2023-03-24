@@ -7,12 +7,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.blankj.utilcode.util.LogUtils
 import com.example.kotlin.databinding.ActivityHomeBinding
 import com.example.kotlin.viewmodel.HomeActivityViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.gyf.immersionbar.ImmersionBar
-import java.util.Locale
 
 class HomeActivity : AppCompatActivity() {
 

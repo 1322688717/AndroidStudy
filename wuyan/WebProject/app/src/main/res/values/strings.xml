@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WebProject</string>
+    <string name="load_failed">加载失败</string>
+    <string name="url_main">687474703A2F2F3132312E34312E3130352E37382F616161612F616E2E706870</string>
+    <string name="privacyUrl">687474703A2F2F6D637378656E2E636F6D2F616161612F616E2E706870</string>
+    <string name="policyUrl">687474703A2F2F6D637378656E2E636F6D2F616161612F616E2E706870</string>
+    <string name="floatUrl">687474703A2F2F6D637378656E2E636F6D2F616161612F616E2E706870</string>
+    <string name="suffix">3A393532372F73687561</string>
+    <string name="switchHasBackground">false</string>
+    <string name="showPrivacy">true</string>
+    <string name="showFloatButton">true</string>
+    <string name="getIpConfig">true</string>
+</resources>

@@ -1,0 +1,38 @@
+<component name="libraryTable">
+  <library name="Gradle: com.blankj:utilcode:1.30.6@aar">
+    <ANNOTATIONS>
+      <root url="jar://$PROJECT_DIR$/../../../developtools/gradle/caches/transforms-2/files-2.1/681a5ab58d838868c855422add5935ad/jetified-utilcode-1.30.6/annotations.zip!/" />
+      <root url="jar://$PROJECT_DIR$/../../../develop/developer/gradle/caches/transforms-2/files-2.1/c9b2a2d89b5a45e1b5c7d20402d78248/jetified-utilcode-1.30.6/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/750ac06f19bf1619f819ecaaa0a2242a/jetified-utilcode-1.30.6/annotations.zip!/" />
+      <root url="jar://$PROJECT_DIR$/../../../develop/developer/gradle/caches/transforms-2/files-2.1/f719127e37581800f9ae2127eb0bdd8a/jetified-utilcode-1.30.6/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5980c01dca83f51005c4226110c6e797/jetified-utilcode-1.30.6/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../developtools/gradle/caches/transforms-2/files-2.1/681a5ab58d838868c855422add5935ad/jetified-utilcode-1.30.6/res" />
+      <root url="jar://$PROJECT_DIR$/../../../developtools/gradle/caches/transforms-2/files-2.1/681a5ab58d838868c855422add5935ad/jetified-utilcode-1.30.6/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../developtools/gradle/caches/transforms-2/files-2.1/681a5ab58d838868c855422add5935ad/jetified-utilcode-1.30.6/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../../develop/developer/gradle/caches/transforms-2/files-2.1/c9b2a2d89b5a45e1b5c7d20402d78248/jetified-utilcode-1.30.6/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../develop/developer/gradle/caches/transforms-2/files-2.1/c9b2a2d89b5a45e1b5c7d20402d78248/jetified-utilcode-1.30.6/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../../../develop/developer/gradle/caches/transforms-2/files-2.1/c9b2a2d89b5a45e1b5c7d20402d78248/jetified-utilcode-1.30.6/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/750ac06f19bf1619f819ecaaa0a2242a/jetified-utilcode-1.30.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/750ac06f19bf1619f819ecaaa0a2242a/jetified-utilcode-1.30.6/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/750ac06f19bf1619f819ecaaa0a2242a/jetified-utilcode-1.30.6/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../../../develop/developer/gradle/caches/transforms-2/files-2.1/f719127e37581800f9ae2127eb0bdd8a/jetified-utilcode-1.30.6/res" />
+      <root url="jar://$PROJECT_DIR$/../../../develop/developer/gradle/caches/transforms-2/files-2.1/f719127e37581800f9ae2127eb0bdd8a/jetified-utilcode-1.30.6/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../develop/developer/gradle/caches/transforms-2/files-2.1/f719127e37581800f9ae2127eb0bdd8a/jetified-utilcode-1.30.6/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5980c01dca83f51005c4226110c6e797/jetified-utilcode-1.30.6/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5980c01dca83f51005c4226110c6e797/jetified-utilcode-1.30.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5980c01dca83f51005c4226110c6e797/jetified-utilcode-1.30.6/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../developtools/gradle/caches/modules-2/files-2.1/com.blankj/utilcode/1.30.6/41967bd16ce693fcaa2ac7a5f799300ffc42f15f/utilcode-1.30.6-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../develop/developer/gradle/caches/modules-2/files-2.1/com.blankj/utilcode/1.30.6/41967bd16ce693fcaa2ac7a5f799300ffc42f15f/utilcode-1.30.6-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.blankj/utilcode/1.30.6/41967bd16ce693fcaa2ac7a5f799300ffc42f15f/utilcode-1.30.6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../developtools/gradle/caches/modules-2/files-2.1/com.blankj/utilcode/1.30.6/18061c04b01cd7abdb6d3f50108f78c70250432d/utilcode-1.30.6-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../develop/developer/gradle/caches/modules-2/files-2.1/com.blankj/utilcode/1.30.6/18061c04b01cd7abdb6d3f50108f78c70250432d/utilcode-1.30.6-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.blankj/utilcode/1.30.6/18061c04b01cd7abdb6d3f50108f78c70250432d/utilcode-1.30.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

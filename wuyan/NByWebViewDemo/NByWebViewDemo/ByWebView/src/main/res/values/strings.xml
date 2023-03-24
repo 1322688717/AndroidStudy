@@ -1,0 +1,4 @@
+<resources>
+    <string name="by_web_string_loading">加载中…</string>
+    <string name="by_web_string_click_load">重启程序尝试</string>
+</resources>

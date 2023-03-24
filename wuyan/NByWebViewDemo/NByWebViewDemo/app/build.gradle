@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        applicationId "com.Tpp8888.Tpp9999"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 15
+        versionName "3.3.1"
+        multiDexEnabled true
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        // tencent x5
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    // 其他 webview
+    signingConfigs {
+        release {
+            storeFile file("./webview")
+            storePassword "webview2018"
+            keyAlias "webview"
+            keyPassword "webview2018"
+        }
+        debug {
+            storeFile file("./webview")
+            storePassword "webview2018"
+            keyAlias "webview"
+            keyPassword "webview2018"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'com.google.android.material:material:1.2.1'
+    testImplementation 'junit:junit:4.12'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation files('libs/tbs_sdk_thirdapp_v4.3.0.281_44181_sharewithdownloadwithfile_withoutGame_obfs_20220407_152305.jar')
+    implementation project(':ByWebView')
+//    implementation 'com.github.youlookwhat:ByWebView:1.2.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.13'
+
+
+    implementation 'com.tencent:mmkv:1.2.14'
+
+}

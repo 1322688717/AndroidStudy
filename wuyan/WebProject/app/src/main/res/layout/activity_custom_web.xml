@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <ImageView
+            android:id="@+id/iv_ad_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:padding="16dp"
+            android:src="@drawable/nt_ad_ic_back" />
+
+        <TextView
+            android:id="@+id/tv_ad_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/nt_color_000000"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/nt_color_000000" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_ad"
+        style="@style/StyleProgressBarMini"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:max="100" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.yxml8888.yxml9999.view.LollipopFixedWebView
+            android:id="@+id/wb_ad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none" />
+
+        <TextView
+            android:id="@+id/tv_ad_reload"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/nt_color_FFFFFF"
+            android:gravity="center"
+            android:text="加载失败，点击重试。"
+            android:visibility="gone" />
+    </FrameLayout>
+</LinearLayout>

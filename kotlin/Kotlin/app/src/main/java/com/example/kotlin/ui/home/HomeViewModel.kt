@@ -11,7 +11,6 @@ import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
 
-    var erathy = MutableLiveData<String>()
     var sao = MutableLiveData<String>()
 
     fun setSao() {

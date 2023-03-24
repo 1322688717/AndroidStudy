@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.java8888.java9999"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 20210321
+        versionName "2.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        ndk {
+//            abiFilters "armeabi", "armeabi-v7a", "x86"
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    //implementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.github.Justson.AgentWeb:agentweb-core:v4.1.9-androidx'
+    implementation 'com.github.Justson.AgentWeb:agentweb-filechooser:v4.1.9-androidx'
+    implementation 'com.github.Justson:Downloader:v4.1.9-androidx'
+    implementation 'com.alibaba:fastjson:1.2.75'
+
+    //  blackJ
+    implementation 'com.blankj:utilcode:1.30.6'
+    //  hjq
+    //  网络请求
+    implementation 'com.github.getActivity:EasyHttp:10.8'
+    // 吐司框架
+    implementation 'com.github.getActivity:ToastUtils:10.3'
+    // Gson 解析容错
+    implementation 'com.github.getActivity:GsonFactory:5.2'
+    // Json 解析框架
+    implementation 'com.google.code.gson:gson:2.8.5'
+    // 权限请求框架
+    implementation 'com.github.getActivity:XXPermissions:13.5'
+    //核心必须依赖
+    implementation 'com.scwang.smart:refresh-layout-kernel:2.0.1'
+    implementation 'com.scwang.smart:refresh-header-classics:2.0.1'
+
+    //  okio
+    implementation("com.squareup.okio:okio:3.0.0")
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+
+    implementation 'com.github.youlookwhat:WebProgress:1.2.0'
+
+    implementation 'com.tencent:mmkv:1.2.14'
+
+}
