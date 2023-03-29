@@ -648,7 +648,19 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
             @Override
             public void run() {
                 mLayoutError.setVisibility(View.VISIBLE);
-                tvErrorJson.setText(error);
+
+                switch (error){
+                    case "http://121.41.105.78/json/xx.json":
+                        tvErrorJson.setText(error+"错误的json");
+                        break;
+                    case "http://google.commmm/xxxx.json":
+                        tvErrorJson.setText(error+"访问不了的json");
+                        break;
+                    case "http://121.41.105.78/json/an.json":
+                        tvErrorJson.setText(error+"正确的json");
+                        break;
+                }
+
                 mBtnReload.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
