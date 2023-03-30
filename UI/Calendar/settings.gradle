@@ -3,6 +3,10 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/'}
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
     }
 }
 dependencyResolutionManagement {
@@ -10,6 +14,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
     }
 }
 rootProject.name = "Calendar"
