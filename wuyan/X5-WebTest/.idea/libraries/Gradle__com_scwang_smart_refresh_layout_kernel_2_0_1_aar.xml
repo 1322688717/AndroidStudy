@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.scwang.smart:refresh-layout-kernel:2.0.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/14bd5cfc9353e0c1bae4cec9752d35b7/jetified-refresh-layout-kernel-2.0.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/14bd5cfc9353e0c1bae4cec9752d35b7/jetified-refresh-layout-kernel-2.0.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/14bd5cfc9353e0c1bae4cec9752d35b7/jetified-refresh-layout-kernel-2.0.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7807423acaeae66fa17e3c22c2eac415/jetified-refresh-layout-kernel-2.0.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7807423acaeae66fa17e3c22c2eac415/jetified-refresh-layout-kernel-2.0.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7807423acaeae66fa17e3c22c2eac415/jetified-refresh-layout-kernel-2.0.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smart/refresh-layout-kernel/2.0.1/8332fa145c385ff6a9c3a76d961bc29858c699b1/refresh-layout-kernel-2.0.1-javadoc.jar!/" />

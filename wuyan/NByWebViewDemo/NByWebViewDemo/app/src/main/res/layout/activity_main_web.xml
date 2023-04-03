@@ -53,6 +53,16 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:src="@mipmap/ic_internet_error" />
+
+            <TextView
+                android:id="@+id/tv_error_json"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="这里显示访问不了的json网址"/>
+
             <Button
                 android:id="@+id/btn_reload"
                 android:layout_gravity="center"
@@ -79,7 +89,8 @@
         android:layout_marginBottom="100dp"
         android:background="@mipmap/icon_float"
         android:clickable="true"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_marginRight="20dp" />
 
     <com.Tpp8888.Tpp9999.view.NTSkipView
         android:id="@+id/tv_skip"

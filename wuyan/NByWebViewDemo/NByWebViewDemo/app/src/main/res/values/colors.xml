@@ -8,6 +8,7 @@
     <color name="colorWhite">#ffffffff</color>
     <color name="color_FF4081">#FF4081</color>
     <color name="white">#ffffff</color>
+    <color name="black">#FF000000</color>
 
 
     <color name="textColor">#323232</color>

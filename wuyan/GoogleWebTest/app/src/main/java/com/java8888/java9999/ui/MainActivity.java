@@ -89,7 +89,6 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
     private ValueCallback<Uri> uploadFile;
     private ValueCallback<Uri[]> uploadFiles;
     private boolean bValue = true;
-
     private TextView tvErrorJson;
 
     @Override

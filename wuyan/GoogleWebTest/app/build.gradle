@@ -56,10 +56,8 @@ dependencies {
     //核心必须依赖
     implementation 'com.scwang.smart:refresh-layout-kernel:2.0.1'
     implementation 'com.scwang.smart:refresh-header-classics:2.0.1'
-
     //  okio
     implementation("com.squareup.okio:okio:3.0.0")
-
     // OkHttp
     implementation "com.squareup.okhttp3:okhttp:4.10.0"
     implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'

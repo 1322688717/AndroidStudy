@@ -29,6 +29,7 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -78,10 +79,9 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
     private FrameLayout fullVideo;
     private android.webkit.WebView mWebView;
     private ValueCallback<Uri[]> uploadFiles;
-
     private ValueCallback<Uri> uploadFile;
-
     private WebProgress mProgress;
+    private TextView tvErrorJson;
 
     //踩坑，申请读写和网络
     public static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -206,6 +206,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
         mTvSkip = findViewById(R.id.tv_skip);
         fullVideo = findViewById(R.id.full_video);
         mWebView = findViewById(R.id.web_view);
+        tvErrorJson = findViewById(R.id.tv_error_json);
     }
 
     /**
@@ -266,7 +267,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                        skipError();
+                        skipError(urlBean.getIpUrl(),"加载失败");
                     }
 
                     @Override
@@ -286,7 +287,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
                                 }
                             });
                         } catch (Exception e) {
-                            skipError();
+                            skipError(urlBean.getIpUrl(),"配置错误");
                         }
                     }
                 });
@@ -368,6 +369,8 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
                 } else {
                     webUrl = urlBean.getWebViewUrl();
                 }
+                mLayoutError.setVisibility(View.GONE);
+                mWebView.setVisibility(View.VISIBLE);
                 mProgress.show();
                 mWebView.loadUrl(webUrl);
 
@@ -537,7 +540,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
     /**
      * 跳转错误页
      */
-    public void skipError() {
+    public void skipError(String error,String msg) {
         if (null == mLayoutError || null == mBtnReload) {
             return;
         }
@@ -545,6 +548,8 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
             @Override
             public void run() {
                 mLayoutError.setVisibility(View.VISIBLE);
+                tvErrorJson.setText(error);
+                mBtnReload.setText(msg+",点击重试");
                 mBtnReload.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
