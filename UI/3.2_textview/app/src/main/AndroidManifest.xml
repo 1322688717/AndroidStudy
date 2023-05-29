@@ -9,6 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.32_textview">
+        <activity
+            android:name=".RunAway2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".RunAwayActivity"
+            android:exported="false" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

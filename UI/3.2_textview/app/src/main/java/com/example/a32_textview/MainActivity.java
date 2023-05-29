@@ -2,8 +2,12 @@ package com.example.a32_textview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,11 +31,31 @@ public class MainActivity extends AppCompatActivity {
      */
     //@Bind(R.id.img_view)
 
+    private Button btnRunAway;
+    private Button btnRunAway2;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        btnRunAway = findViewById(R.id.btn_running_away);
+        btnRunAway2 = findViewById(R.id.btn_running_away2);
+        btnRunAway.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,RunAwayActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        btnRunAway2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,RunAway2Activity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
